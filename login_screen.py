@@ -51,6 +51,9 @@ class LoginAccess:
             with open("lotto.txt", "w") as written:
                 written.write(self.player_name.get())
                 written.write("\n")
+                written.write(self.player_email.get())
+                written.write("\n")
+                written.write(self.user_id.get())
 
         except ValueError:
              messagebox.showerror("Entry Invalid", "Please enter a valid Name")
