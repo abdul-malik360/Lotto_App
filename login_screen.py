@@ -13,7 +13,7 @@ root.config(bg="#FFC107")
 class LoginAccess:
     player_name = StringVar()
     player_email = StringVar()
-    player_id = StringVar()
+    user_id = StringVar()
     id_res = StringVar()
 
     def __init__(self, master):
@@ -32,7 +32,7 @@ class LoginAccess:
         self.email_ent = Entry(master, textvariable=self.player_email)
         self.email_ent.place(x=200, y=250)
 
-        self.id_ent = Entry(master, textvariable=self.player_id)
+        self.id_ent = Entry(master, textvariable=self.user_id)
         self.id_ent.place(x=200, y=300)
         self.id_ans = Label(master, bg="#FFC107", textvariable=self.id_res)
         self.id_ans.place(x=200, y=350)
@@ -47,14 +47,20 @@ class LoginAccess:
         self.canvas.place(x=400, y=520)
 
     def name(self):
-     #   try:
-     #       if str(self.player_name.get()) == str:
-     #           pass
+        try:
+            with open("lotto.txt", "w") as written:
+                written.write(self.player_name.get())
+                written.write("\n")
 
-     #   except ValueError:
-     #       if self.player_name.get() != str:
-     #           messagebox.showerror("Entry Invalid", "Please enter a valid Name")
+        except ValueError:
+             messagebox.showerror("Entry Invalid", "Please enter a valid Name")
+        #     if self.player_name.get() != str:
+        #         messagebox.showerror("Entry Invalid", "Please enter a valid Name")
         self.email()
+
+
+
+
 
     def email(self):
         regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
