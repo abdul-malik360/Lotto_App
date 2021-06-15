@@ -1,7 +1,33 @@
-File_object = open(r"lotto", "Access_Mode")
-file1 = open("lotto.txt", "w")
-# file2 = open(r"D:\Text\MyFile2.txt","w+")
+from tkinter import *
+import random
+from tkinter import messagebox
 
-File_object.writelines(L) for L = [str1, str2, str3]
+root = Tk()
+root.geometry("500x500")
+root.title("Generate Your Numbers")
 
-# File_object.read([n])
+numb_ans = StringVar()
+numb_ent = StringVar()
+mylist = []
+mynewlist = [numb_ent]
+
+ent_numb = Entry(root, textvariable=numb_ent)
+ent_numb.place(x=50, y=25)
+Label(root, textvariable=numb_ans).place(x=50, y=50)
+
+
+def generate():
+    for x in range(1, 7):
+        number = random.randint(1, 49)
+        mylist.append(number)
+        numb_ans.set(mylist)
+    if numb_ans == numb_ent.get():
+        messagebox.showinfo("you win", "Weldone")
+    elif numb_ans != numb_ent.get():
+        messagebox.showinfo("you loose", "try again")
+
+
+gen_btn = Button(root, text="Generate", command=generate)
+gen_btn.place(x=50, y=100)
+
+root.mainloop()
