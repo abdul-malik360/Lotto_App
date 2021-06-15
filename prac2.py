@@ -1,5 +1,5 @@
 from tkinter import *
-from datetime import date, timedelta
+from datetime import datetime, timedelta
 import rsaidnumber
 
 root = Tk()
@@ -13,13 +13,13 @@ id_res = StringVar()
 id_ent = Entry(root, textvariable=id_no)
 id_ent.place(x=50, y=50)
 
-id_ans = Entry(root, textvariable=id_res)
+id_ans = Label(root, textvariable=id_res)
 id_ans.place(x=50, y=100)
 
 
 def dob():
     id_number = rsaidnumber.parse(id_ent.get())
-    age = (date.today() - id_number.date_of_birth) // timedelta(days=365.245)
+    age = (datetime.today() - id_number.date_of_birth) // timedelta(days=365.245)
     id_res.set(age)
 
 
