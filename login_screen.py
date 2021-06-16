@@ -17,28 +17,39 @@ class LoginAccess:
     id_res = StringVar()
 
     def __init__(self, master):
-        self.label_name = Label(master, text="Name")
-        self.label_name.place(x=80, y=200)
+        self.lotto_logo = PhotoImage(file="images/loto logo 1.png")
+        self.canvas = Canvas(root, width=270, height=180, highlightthickness="0")
+        self.canvas.create_image(0, 0, anchor=NW, image=self.lotto_logo)
+        self.canvas.place(x=165, y=10)
 
-        self.label_email = Label(master, text="Email Address")
-        self.label_email.place(x=80, y=250)
+        self.sa_flag = PhotoImage(file="images/sa flag.png")
+        self.canvas = Canvas(root, width=158, height=100, highlightthickness="0")
+        self.canvas.create_image(0, 0, anchor=NW, image=self.sa_flag)
+        self.canvas.place(x=10, y=280)
 
-        self.label_id = Label(master, text="ID Number")
-        self.label_id.place(x=80, y=300)
+        self.login_frame = LabelFrame(root, padx=50, pady=30, width=378, height=290, bg="#EED313")
+        self.login_frame.place(x=200, y=280)
 
-        self.name_ent = Entry(master, textvariable=self.player_name)
-        self.name_ent.place(x=200, y=200)
+        self.label_name = Label(self.login_frame, text="Name", bg="#EED313")
+        self.label_name.grid(column=1, row=1)
 
-        self.email_ent = Entry(master, textvariable=self.player_email)
-        self.email_ent.place(x=200, y=250)
+        self.label_email = Label(self.login_frame, text="Email Address", bg="#EED313")
+        self.label_email.grid(column=1, row=2)
 
-        self.id_ent = Entry(master, textvariable=self.user_id)
-        self.id_ent.place(x=200, y=300)
-        self.id_ans = Label(master, bg="#FFC107", textvariable=self.id_res)
-        self.id_ans.place(x=200, y=350)
+        self.label_id = Label(self.login_frame, text="ID Number", bg="#EED313")
+        self.label_id.grid(column=1, row=3)
 
-        self.log_btn = Button(root, text="Login In", command=self.name)
-        self.log_btn.place(x=200, y=380)
+        self.name_ent = Entry(self.login_frame, textvariable=self.player_name)
+        self.name_ent.grid(column=2, row=1)
+
+        self.email_ent = Entry(self.login_frame, textvariable=self.player_email)
+        self.email_ent.grid(column=2, row=2)
+
+        self.id_ent = Entry(self.login_frame, textvariable=self.user_id)
+        self.id_ent.grid(column=2, row=3)
+
+        self.log_btn = Button(root, text="Login In", command=self.email, bg="#EED313")
+        self.log_btn.place(x=200, y=415)
 
         self.ithuba_logo = PhotoImage(file="images/ithuba.PNG")
 
@@ -54,16 +65,11 @@ class LoginAccess:
                 written.write(self.player_email.get())
                 written.write("\n")
                 written.write(self.user_id.get())
-
+                written.write("\n")
+                written.write(self.id_res.get())
+                written.write("\n")
         except ValueError:
              messagebox.showerror("Entry Invalid", "Please enter a valid Name")
-        #     if self.player_name.get() != str:
-        #         messagebox.showerror("Entry Invalid", "Please enter a valid Name")
-        self.email()
-
-
-
-
 
     def email(self):
         regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
@@ -79,6 +85,10 @@ class LoginAccess:
             id_number = rsaidnumber.parse(self.id_ent.get())
             age = (datetime.today() - id_number.date_of_birth) // timedelta(days=365.245)
             self.id_res.set(age)
+            if len(self.user_id.get()) < 13:
+                messagebox.showerror("Entry Invalid", "Missing values")
+            elif len(self.user_id.get()) > 13:
+                messagebox.showerror("Entry Invalid", "too many values")
             if age >= 18:
                 messagebox.showinfo("Access Granted", "Lets Play")
                 root.destroy()
@@ -91,9 +101,8 @@ class LoginAccess:
         except ValueError:
 
             messagebox.showerror("Entry Invalid", "Please enter a valid ID Number")
+        self.name()
 
 
-
-
-a = LoginAccess(root)
+c = LoginAccess(root)
 root.mainloop()

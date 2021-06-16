@@ -5,25 +5,35 @@ root.geometry("600x600")
 root.title("Welcome To Ithuba Lotto")
 root.config(bg="#FFC107")
 
-lotto_logo = PhotoImage(file="images/loto logo 1.png")
-ithuba_logo = PhotoImage(file="images/ithuba.PNG")
 
-# place image
-canvas = Canvas(root, width=270, height=180, highlightthickness="0") #
-canvas.create_image(0, 0, anchor=NW, image=lotto_logo,)
-canvas.place(x=165, y=10)
+class WelcomeScreen:
 
-canvas = Canvas(root, width=178, height=55, highlightthickness="0") #
-canvas.create_image(0, 0, anchor=NW, image=ithuba_logo,)
-canvas.place(x=400, y=520)
+    def __init__(self, master):
+        self.lotto_logo = PhotoImage(file="images/loto logo 1.png")
+        self.ithuba_logo = PhotoImage(file="images/ithuba.PNG")
+
+        self.canvas = Canvas(root, width=270, height=180, highlightthickness="0")
+        self.canvas.create_image(0, 0, anchor=NW, image=self.lotto_logo)
+        self.canvas.place(x=165, y=10)
+
+        self.canvas = Canvas(root, width=178, height=55, highlightthickness="0")
+        self.canvas.create_image(0, 0, anchor=NW, image=self.ithuba_logo)
+        self.canvas.place(x=400, y=520)
+
+        self.rules_btn = Button(root, text="Rules", bg="#EED313", command=self.rules_screen)
+        self.rules_btn.place(x=210, y=480)
+
+        self.sign_btn = Button(root, text="Sign in", bg="#EED313", command=self.login_screen)
+        self.sign_btn.place(x=160, y=480)
+
+    def rules_screen(self):
+        root.destroy()
+        import rules
+
+    def login_screen(self):
+        root.destroy()
+        import login_screen
 
 
-def login_screen():
-    root.destroy()
-    import login_screen
-
-
-sign_in = Button(root, text="Sign in", bg="#EED313", command=login_screen).place(x=230, y=450)
-
-
+a = WelcomeScreen(root)
 root.mainloop()
