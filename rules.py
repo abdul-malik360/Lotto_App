@@ -35,9 +35,16 @@ class RulesScreen:
         self.sign_in = Button(root, text="Sign in", bg="#EED313", command=self.login_screen)
         self.sign_in.place(x=200, y=500)
 
+        self.mini_game = Button(root, text="Mini Game", bg="#EED313", command=self.mini_game_screen)
+        self.mini_game.place(x=250, y=500)
+
     def login_screen(self):
         root.destroy()
         import login_screen
+
+    def mini_game_screen(self):
+        root.destroy()
+        import mini_game
 
 
 b = RulesScreen(root)

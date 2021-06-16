@@ -11,10 +11,15 @@ class WelcomeScreen:
     def __init__(self, master):
         self.lotto_logo = PhotoImage(file="images/loto logo 1.png")
         self.ithuba_logo = PhotoImage(file="images/ithuba.PNG")
+        self.welcome_pic = PhotoImage(file="images/welcome pic.PNG")
 
         self.canvas = Canvas(root, width=270, height=180, highlightthickness="0")
         self.canvas.create_image(0, 0, anchor=NW, image=self.lotto_logo)
         self.canvas.place(x=165, y=10)
+
+        self.canvas = Canvas(root, width=574, height=180, highlightthickness="0")
+        self.canvas.create_image(0, 0, anchor=NW, image=self.welcome_pic)
+        self.canvas.place(x=10, y=300)
 
         self.canvas = Canvas(root, width=178, height=55, highlightthickness="0")
         self.canvas.create_image(0, 0, anchor=NW, image=self.ithuba_logo)
