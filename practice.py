@@ -1,6 +1,7 @@
 from tkinter import *
 import random
 from tkinter import messagebox
+from playsound import playsound
 
 root = Tk()
 root.geometry("500x500")
@@ -21,6 +22,7 @@ Label(root, textvariable=same_ans, bg="sky blue").place(x=50, y=80)
 
 def generate():
     x = 0
+    playsound("audio/here they come.mp3")
     while x < 6:
         number = random.randint(1, 49)
         if number not in mylist:

@@ -48,8 +48,11 @@ class LoginAccess:
         self.id_ent = Entry(self.login_frame, textvariable=self.user_id)
         self.id_ent.grid(column=2, row=3)
 
-        self.log_btn = Button(root, text="Login In", command=self.email, bg="#EED313")
+        self.log_btn = Button(root, text="Login", command=self.email, bg="#EED313", borderwidth="5", cursor="hand2", font=2, foreground="black")
         self.log_btn.place(x=200, y=415)
+
+        self.back_btn = Button(root, text="Back", command=self.back, bg="#EED313", borderwidth="5", cursor="hand2", font=2, foreground="black")
+        self.back_btn.place(x=300, y=415)
 
         self.ithuba_logo = PhotoImage(file="images/ithuba.PNG")
 
@@ -96,12 +99,15 @@ class LoginAccess:
                 young = 18 - age
                 messagebox.showerror("You are too young to play", "Please try again in " + str(young) + " years")
                 root.destroy()
-                import main
+                import mini_game
         except ValueError:
 
             messagebox.showerror("Entry Invalid", "Invalid ID Number. Try Again")
         self.name()
 
+    def back(self):
+        root.destroy()
+        import main
 
 c = LoginAccess(root)
 root.mainloop()
