@@ -1,4 +1,11 @@
+from tkinter import *
 import random
+
+root = Tk()
+root.geometry("600x600")
+root.title("Welcome To Ithuba Lotto")
+root.config(bg="#FFC107")
+
 
 number = random.randint(1, 100)
 tries = 0
@@ -61,3 +68,5 @@ else:
     print("You were just supposed to say yes or no " + name)
     print("It's simple, 1 is yes,be my friend."
           " 2 is no, I have enough friends")
+
+root.mainloop()
