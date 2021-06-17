@@ -59,7 +59,7 @@ class LoginAccess:
 
     def name(self):
         try:
-            with open("lotto.txt", "w") as written:
+            with open("player_id.txt", "w") as written:
                 written.write(self.player_name.get())
                 written.write("\n")
                 written.write(self.player_email.get())
@@ -80,17 +80,16 @@ class LoginAccess:
         self.dob()
 
     def dob(self):
+        if len(self.user_id.get()) < 13:
+            messagebox.showerror("Entry Invalid", "ID Number characters missing")
+        elif len(self.user_id.get()) > 13:
+            messagebox.showerror("Entry Invalid", "ID Number characters exceeding limit")
         try:
-
             id_number = rsaidnumber.parse(self.id_ent.get())
             age = (datetime.today() - id_number.date_of_birth) // timedelta(days=365.245)
             self.id_res.set(age)
-            if len(self.user_id.get()) < 13:
-                messagebox.showerror("Entry Invalid", "Missing values")
-            elif len(self.user_id.get()) > 13:
-                messagebox.showerror("Entry Invalid", "too many values")
             if age >= 18:
-                messagebox.showinfo("Access Granted", "Lets Play")
+                messagebox.showinfo("Access Granted", "Let's Play")
                 root.destroy()
                 import lotto_game
             elif age < 18:
@@ -100,7 +99,7 @@ class LoginAccess:
                 import main
         except ValueError:
 
-            messagebox.showerror("Entry Invalid", "Please enter a valid ID Number")
+            messagebox.showerror("Entry Invalid", "Invalid ID Number. Try Again")
         self.name()
 
 
