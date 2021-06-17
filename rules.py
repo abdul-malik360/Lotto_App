@@ -1,4 +1,5 @@
 from tkinter import *
+from playsound import playsound
 
 root = Tk()
 root.geometry("600x600")
@@ -38,6 +39,10 @@ class RulesScreen:
         self.mini_game = Button(root, text="Mini Game", bg="#EED313", command=self.mini_game_screen)
         self.mini_game.place(x=280, y=500)
 
+        self.speaker = PhotoImage(file="images/speaker.PNG")
+        self.speaker_btn = Button(root, image=self.speaker, command=self.rules, cursor="hand2", borderwidth=2, highlightthickness=1, highlightbackground="#FFC107", bg="#FFC107")
+        self.speaker_btn.place(x=530, y=215)
+
     def login_screen(self):
         root.destroy()
         import login_screen
@@ -45,6 +50,9 @@ class RulesScreen:
     def mini_game_screen(self):
         root.destroy()
         import mini_game
+
+    def rules(self):
+        playsound("audio/rules.mp3")
 
 
 b = RulesScreen(root)

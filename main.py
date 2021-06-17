@@ -45,8 +45,10 @@ class WelcomeScreen:
         self.sign_btn.place(x=160, y=480)
 
     def rules_screen(self):
+        playsound("audio/before generated.mp3")
         root.destroy()
         import rules
+
 
     def login_screen(self):
         playsound("audio/welcome.mp3")
