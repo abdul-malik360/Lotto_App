@@ -28,15 +28,15 @@ class RulesScreen:
         self.rules_frame.place(x=200, y=200)
 
         self.rules_txt = Label(self.rules_frame,
-                          text="Enter your Name, Email Address and ID Number""\n" "\n""Only valid inputs allows you to play" "\n""\n" "Age required to play game is 18 and older" "\n""\n" "You select a set of six numbers and run the game" "\n""\n" "You're allowed to generate 3 sets " "\n""\n" "Your selected set is compared to the game's selected numbers" "\n""\n" "Stand a chance to win R10 000 000" "\n""\n" "If you meet the age requirement, click sign in""\n""If not, click Mini Game",
+                          text="Enter your Name, Email Address and ID Number""\n""Only valid inputs allows you to play" "\n""\n" "Age required to play game is 18 and older" "\n""\n" "You select a set of six numbers and run the game" "\n""\n" "You're allowed to generate 3 sets " "\n""\n" "Your selected set is compared to the game's lucky draw" "\n""\n" "Stand a chance to win R10 000 000" "\n""\n" "If you meet the age requirement, click sign in""\n""If not, click Mini Game",
                           bg="#EED313")
-        self.rules_txt.place(x=10, y=10)
+        self.rules_txt.place(x=0, y=5)
 
         self.sign_in = Button(root, text="Sign in", bg="#EED313", command=self.login_screen)
         self.sign_in.place(x=200, y=500)
 
         self.mini_game = Button(root, text="Mini Game", bg="#EED313", command=self.mini_game_screen)
-        self.mini_game.place(x=250, y=500)
+        self.mini_game.place(x=280, y=500)
 
     def login_screen(self):
         root.destroy()

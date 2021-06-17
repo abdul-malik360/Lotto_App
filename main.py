@@ -26,7 +26,7 @@ class WelcomeScreen:
         self.canvas.place(x=400, y=520)
 
         self.rules_btn = Button(root, text="Rules", bg="#EED313", command=self.rules_screen)
-        self.rules_btn.place(x=210, y=480)
+        self.rules_btn.place(x=260, y=480)
 
         self.sign_btn = Button(root, text="Sign in", bg="#EED313", command=self.login_screen)
         self.sign_btn.place(x=160, y=480)
