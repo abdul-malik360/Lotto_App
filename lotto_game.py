@@ -227,10 +227,14 @@ class GameScreen:
             x = x - 1
         self.gene_numb.sort()
         self.first_numbs.sort()
+        self.second_numbs.sort()
+        self.third_numbs.sort()
         self.gen_numbs.set(self.gene_numb)
 
     def same_number(self):
         self.same_numb = set(self.gene_numb).intersection(set(self.first_numbs))
+        self.same_numb = set(self.gene_numb).intersection(set(self.second_numbs))
+        self.same_numb = set(self.gene_numb).intersection(set(self.third_numbs))
         self.same_ans.set(self.same_numb)
         if len(self.same_ans.get()) == 6:
             messagebox.showinfo("congrats", "you won 10 000 000")
@@ -238,9 +242,9 @@ class GameScreen:
             messagebox.showinfo("congrats", "you won 8,584")
         elif len(self.same_ans.get()) == 4:
             messagebox.showinfo("congrats", "you won 2,384")
-        elif len(self.same_ans.get()) == :
+        elif len(self.same_ans.get()) == 3:
             messagebox.showinfo("congrats", "you won 100.50")
-        elif len(self.same_ans.get()) == :
+        elif len(self.same_ans.get()) == 2:
             messagebox.showinfo("congrats", "you won 20")
 
 
