@@ -1,4 +1,6 @@
 from tkinter import *
+import random
+from playsound import playsound
 
 root = Tk()
 root.geometry("600x600")
@@ -10,9 +12,13 @@ class GameScreen:
     numb_ent1 = StringVar()
     numb_ent2 = StringVar()
     numb_ent3 = StringVar()
+    gen_numbs = StringVar()
+    same_ans = StringVar()
     first_numbs = []
     second_numbs = []
     third_numbs = []
+    gene_numb = []
+    same_numb = []
 
     def __init__(self, master):
         self.lotto_logo = PhotoImage(file="images/logo small.PNG")
@@ -177,14 +183,24 @@ class GameScreen:
         self.btn_49 = Button(root, image=self.number_49, command=lambda: self.choose_number(49), borderwidth=0, highlightthickness=0, highlightbackground="#FFC107", bd=0, bg="#FFC107")
         self.btn_49.place(x=430, y=310)
 
-        self.my_label = Label(master, text="", textvariable=self.numb_ent1)
-        self.my_label.place(x=50, y=450)
+        self.ent1_label = Label(master, text="", textvariable=self.numb_ent1)
+        self.ent1_label.place(x=50, y=370)
 
-        self.my_label = Label(master, text="", textvariable=self.numb_ent2)
-        self.my_label.place(x=50, y=500)
+        self.ent2_label = Label(master, text="", textvariable=self.numb_ent2)
+        self.ent2_label.place(x=50, y=390)
 
-        self.my_label = Label(master, text="", textvariable=self.numb_ent3)
-        self.my_label.place(x=50, y=550)
+        self.ent3_label = Label(master, text="", textvariable=self.numb_ent3)
+        self.ent3_label.place(x=50, y=410)
+
+        self.generated = Label(root, textvariable=self.gen_numbs, bg="sky blue").place(x=50, y=430)
+
+        self.gen_btn = Button(root, text="Generate", command=self.generate)
+        self.gen_btn.place(x=350, y=530)
+
+        self.same_lab = Label(root, textvariable=self.same_ans, bg="sky blue").place(x=50, y=470)
+
+        self.ge_btn = Button(root, text="check same", command=self.same_number)
+        self.ge_btn.place(x=350, y=450)
 
     def choose_number(self, number):
         if len(self.first_numbs) < 6 and number not in self.first_numbs:
@@ -197,6 +213,28 @@ class GameScreen:
             self.third_numbs.append(number)
             self.numb_ent3.set(self.third_numbs)
 
+    def generate(self):
+        x = 0
+        playsound("audio/here they come.mp3")
+        while x < 6:
+            number = random.randint(1, 49)
+            if number not in self.gene_numb:
+                self.gene_numb.append(number)
+                x = x + 1
+
+        else:
+            x = x - 1
+        self.gene_numb.sort()
+        self.first_numbs.sort()
+        self.gen_numbs.set(self.gene_numb)
+
+    def same_number(self):
+        y = 0
+        for i in range(0, 6):
+            if self.first_numbs[i] == self.gene_numb[i]:
+                y += 1
+                self.same_numb.append(i)
+            self.same_ans.set(self.same_numb)
 
 e = GameScreen(root)
 root.mainloop()
