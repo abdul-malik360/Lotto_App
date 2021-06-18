@@ -7,8 +7,13 @@ root.config(bg="#FFC107")
 
 
 class GameScreen:
-    numb_ent = StringVar()
+    numb_ent1 = StringVar()
+    numb_ent2 = StringVar()
+    numb_ent3 = StringVar()
     first_numbs = []
+    second_numbs = []
+    third_numbs = []
+
     def __init__(self, master):
         self.lotto_logo = PhotoImage(file="images/logo small.PNG")
         self.ithuba_logo = PhotoImage(file="images/ithuba.PNG")
@@ -172,14 +177,25 @@ class GameScreen:
         self.btn_49 = Button(root, image=self.number_49, command=lambda: self.choose_number(49), borderwidth=0, highlightthickness=0, highlightbackground="#FFC107", bd=0, bg="#FFC107")
         self.btn_49.place(x=430, y=310)
 
-        self.my_label = Label(master, text="", textvariable=self.numb_ent)
+        self.my_label = Label(master, text="", textvariable=self.numb_ent1)
         self.my_label.place(x=50, y=450)
+
+        self.my_label = Label(master, text="", textvariable=self.numb_ent2)
+        self.my_label.place(x=50, y=500)
+
+        self.my_label = Label(master, text="", textvariable=self.numb_ent3)
+        self.my_label.place(x=50, y=550)
 
     def choose_number(self, number):
         if len(self.first_numbs) < 6 and number not in self.first_numbs:
             self.first_numbs.append(number)
-            self.numb_ent.set(self.first_numbs)
-
+            self.numb_ent1.set(self.first_numbs)
+        elif len(self.first_numbs) == 6 and len(self.second_numbs) < 6 and number not in self.second_numbs:
+            self.second_numbs.append(number)
+            self.numb_ent2.set(self.second_numbs)
+        elif len(self.second_numbs) == 6 and len(self.third_numbs) < 6 and number not in self.third_numbs:
+            self.third_numbs.append(number)
+            self.numb_ent3.set(self.third_numbs)
 
 
 e = GameScreen(root)
