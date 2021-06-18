@@ -49,7 +49,6 @@ class WelcomeScreen:
         root.destroy()
         import rules
 
-
     def login_screen(self):
         playsound("audio/welcome.mp3")
         root.destroy()

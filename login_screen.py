@@ -109,5 +109,6 @@ class LoginAccess:
         root.destroy()
         import main
 
-c = LoginAccess(root)
+
+d = LoginAccess(root)
 root.mainloop()

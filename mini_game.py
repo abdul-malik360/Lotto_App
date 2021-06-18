@@ -69,4 +69,5 @@ else:
     print("It's simple, 1 is yes,be my friend."
           " 2 is no, I have enough friends")
 
+# c = MiniGameScreen(root)
 root.mainloop()

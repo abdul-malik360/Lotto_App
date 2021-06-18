@@ -33,15 +33,15 @@ class RulesScreen:
                           bg="#EED313")
         self.rules_txt.place(x=0, y=5)
 
-        self.sign_in = Button(root, text="Sign in", bg="#EED313", command=self.login_screen)
+        self.sign_in = Button(root, text="Sign in", bg="#EED313", command=self.login_screen, cursor="hand2", borderwidth=2, highlightthickness=1, highlightbackground="#FFC107")
         self.sign_in.place(x=200, y=500)
 
-        self.mini_game = Button(root, text="Mini Game", bg="#EED313", command=self.mini_game_screen)
+        self.mini_game = Button(root, text="Mini Game", bg="#EED313", command=self.mini_game_screen, cursor="hand2", borderwidth=2, highlightthickness=1, highlightbackground="#FFC107")
         self.mini_game.place(x=280, y=500)
 
         self.speaker = PhotoImage(file="images/speaker.PNG")
         self.speaker_btn = Button(root, image=self.speaker, command=self.rules, cursor="hand2", borderwidth=2, highlightthickness=1, highlightbackground="#FFC107", bg="#FFC107")
-        self.speaker_btn.place(x=530, y=215)
+        self.speaker_btn.place(x=540, y=459)
 
     def login_screen(self):
         root.destroy()
