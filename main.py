@@ -32,8 +32,6 @@ class WelcomeScreen:
         self.canvas.create_image(0, 0, anchor=NW, image=self.ten_mill)
         self.canvas.place(x=300, y=200)
 
-
-
         self.canvas = Canvas(root, width=178, height=55, highlightthickness="0")
         self.canvas.create_image(0, 0, anchor=NW, image=self.ithuba_logo)
         self.canvas.place(x=400, y=520)

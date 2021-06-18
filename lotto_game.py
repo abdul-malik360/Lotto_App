@@ -1,6 +1,7 @@
 from tkinter import *
 import random
 from playsound import playsound
+from tkinter import messagebox
 
 root = Tk()
 root.geometry("600x600")
@@ -229,12 +230,19 @@ class GameScreen:
         self.gen_numbs.set(self.gene_numb)
 
     def same_number(self):
-        y = 0
-        for i in range(0, 6):
-            if self.first_numbs[i] == self.gene_numb[i]:
-                y += 1
-                self.same_numb.append(i)
-            self.same_ans.set(self.same_numb)
+        self.same_numb = set(self.gene_numb).intersection(set(self.first_numbs))
+        self.same_ans.set(self.same_numb)
+        if len(self.same_ans.get()) == 6:
+            messagebox.showinfo("congrats", "you won 10 000 000")
+        elif len(self.same_ans.get()) == 5:
+            messagebox.showinfo("congrats", "you won 8,584")
+        elif len(self.same_ans.get()) == 4:
+            messagebox.showinfo("congrats", "you won 2,384")
+        elif len(self.same_ans.get()) == :
+            messagebox.showinfo("congrats", "you won 100.50")
+        elif len(self.same_ans.get()) == :
+            messagebox.showinfo("congrats", "you won 20")
+
 
 e = GameScreen(root)
 root.mainloop()
