@@ -7,6 +7,7 @@ root.title("Rules and Prizes")
 root.config(bg="#FFC107")
 
 
+
 class RulesScreen:
     def __init__(self, master):
         self.lotto_logo = PhotoImage(file="images/loto logo 1.png")
@@ -42,6 +43,7 @@ class RulesScreen:
         self.speaker = PhotoImage(file="images/speaker.PNG")
         self.speaker_btn = Button(root, image=self.speaker, command=self.rules, cursor="hand2", borderwidth=2, highlightthickness=1, highlightbackground="#FFC107", bg="#FFC107")
         self.speaker_btn.place(x=540, y=459)
+
 
     def login_screen(self):
         root.destroy()

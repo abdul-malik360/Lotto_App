@@ -200,8 +200,15 @@ class GameScreen:
 
         self.same_lab = Label(root, textvariable=self.same_ans, bg="sky blue").place(x=50, y=470)
 
-        self.ge_btn = Button(root, text="check same", command=self.same_number)
-        self.ge_btn.place(x=350, y=450)
+        self.check_btn = Button(root, text="check same", command=self.same_number)
+        self.check_btn.place(x=350, y=450)
+
+        self.clear_btn1 = Button(root, text="Clear", command=lambda: self.clear("1"))
+        self.clear_btn1.place(x=150, y=370)
+        self.clear_btn2 = Button(root, text="Clear", command=lambda: self.clear(""))
+        self.clear_btn2.place(x=150, y=390)
+        self.clear_btn3 = Button(root, text="Clear", command=lambda: self.clear(""))
+        self.clear_btn3.place(x=150, y=410)
 
     def choose_number(self, number):
         if len(self.first_numbs) < 6 and number not in self.first_numbs:
@@ -213,6 +220,10 @@ class GameScreen:
         elif len(self.second_numbs) == 6 and len(self.third_numbs) < 6 and number not in self.third_numbs:
             self.third_numbs.append(number)
             self.numb_ent3.set(self.third_numbs)
+        elif len(self.third_numbs) == 6:
+            messagebox.showerror("Entries full", "Play Game")
+        else:
+            messagebox.showerror("Entry Invalid", "You can only choose one number per Entry")
 
     def generate(self):
         x = 0
@@ -233,8 +244,8 @@ class GameScreen:
 
     def same_number(self):
         self.same_numb = set(self.gene_numb).intersection(set(self.first_numbs))
-        self.same_numb = set(self.gene_numb).intersection(set(self.second_numbs))
-        self.same_numb = set(self.gene_numb).intersection(set(self.third_numbs))
+        # self.same_numb = set(self.gene_numb).intersection(set(self.second_numbs))
+        # self.same_numb = set(self.gene_numb).intersection(set(self.third_numbs))
         self.same_ans.set(self.same_numb)
         if len(self.same_ans.get()) == 6:
             messagebox.showinfo("congrats", "you won 10 000 000")
@@ -246,6 +257,20 @@ class GameScreen:
             messagebox.showinfo("congrats", "you won 100.50")
         elif len(self.same_ans.get()) == 2:
             messagebox.showinfo("congrats", "you won 20")
+
+    def clear(self, clear):
+        if len(self.first_numbs) > 0:
+            self.numb_ent1.set("")
+            self.first_numbs = []
+
+        elif len(self.second_numbs) > 0:
+            self.numb_ent2.set("")
+            self.second_numbs = []
+
+        elif len(self.third_numbs) > 0:
+            self.numb_ent3.set("")
+            self.third_numbs = []
+
 
 
 e = GameScreen(root)
