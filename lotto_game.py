@@ -41,7 +41,7 @@ class GameScreen:
 
         self.canvas = Canvas(root, width=90, height=28, highlightthickness="0")
         self.canvas.create_image(0, 0, anchor=NW, image=self.ithuba_logo,)
-        self.canvas.place(x=600, y=10)
+        self.canvas.place(x=600, y=660)
 
         self.canvas = Canvas(root, width=223, height=120, highlightthickness="0")
         self.canvas.create_image(0, 0, anchor=NW, image=self.lucky_numbers, )
@@ -201,40 +201,40 @@ class GameScreen:
         self.btn_49.place(x=530, y=350)
 
         self.lotto_frame = LabelFrame(root, padx=30, pady=30, width=500, height=190, bg="#EED313")
-        self.lotto_frame.place(x=50, y=490)
+        self.lotto_frame.place(x=100, y=420)
 
         self.ent1_label = Label(self.lotto_frame, text="Your Lucky List 1", width=13, bg="#EED313")
         self.ent1_label.grid(column=1, row=1)
         self.ent2_label = Label(self.lotto_frame, text="Your Lucky List 2", width=13, bg="#EED313")
-        self.ent2_label.grid(column=3, row=1)
+        self.ent2_label.grid(column=2, row=1)
         self.ent3_label = Label(self.lotto_frame, text="Your Lucky List 3", width=13, bg="#EED313")
-        self.ent3_label.grid(column=5, row=1)
+        self.ent3_label.grid(column=3, row=1)
 
-        self.ent1 = Label(self.lotto_frame, text="", textvariable=self.numb_ent1, width=13, bg="#FFC107")
+        self.ent1 = Label(self.lotto_frame, text="", textvariable=self.numb_ent1, width=13, bg="white")
         self.ent1.grid(column=1, row=2)
-        self.ent2 = Label(self.lotto_frame, text="", textvariable=self.numb_ent2, width=13, bg="#FFC107")
-        self.ent2.grid(column=3, row=2)
-        self.ent3 = Label(self.lotto_frame, text="", textvariable=self.numb_ent3, width=13, bg="#FFC107")
-        self.ent3.grid(column=5, row=2)
+        self.ent2 = Label(self.lotto_frame, text="", textvariable=self.numb_ent2, width=13, bg="white")
+        self.ent2.grid(column=2, row=2)
+        self.ent3 = Label(self.lotto_frame, text="", textvariable=self.numb_ent3, width=13, bg="white")
+        self.ent3.grid(column=3, row=2)
 
-        self.generated_lab = Label(self.lotto_frame, textvariable=self.gen_numbs, width=13, bg="#FFC107")
-        self.generated_lab.grid(column=3, row=3)
+        self.generated_lab = Label(self.lotto_frame, textvariable=self.gen_numbs, width=35, bg="white")
+        self.generated_lab.grid(column=2, row=5)
 
-        self.gen_btn = Button(root, text="Generate", command=self.generate)
-        self.gen_btn.place(x=300, y=530)
+        self.gen_btn = Button(self.lotto_frame, text="PLAY", command=self.generate)
+        self.gen_btn.grid(column=3, row=5)
 
-        self.same_lab1 = Label(self.lotto_frame, textvariable=self.same_ans1, bg="sky blue").grid(column=1, row=5)
-        self.same_lab2 = Label(self.lotto_frame, textvariable=self.same_ans2, bg="sky blue").grid(column=1, row=6)
-        self.same_lab3 = Label(self.lotto_frame, textvariable=self.same_ans3, bg="sky blue").grid(column=1, row=7)
+        self.same_lab1 = Label(self.lotto_frame, textvariable=self.same_ans1, bg="white", width=35).grid(column=2, row=6)
+        self.same_lab2 = Label(self.lotto_frame, textvariable=self.same_ans2, bg="white", width=35).grid(column=2, row=7)
+        self.same_lab3 = Label(self.lotto_frame, textvariable=self.same_ans3, bg="white", width=35).grid(column=2, row=8)
 
-        self.clear_btn1 = Button(self.lotto_frame, text="Clear1", command=self.clear1)
-        self.clear_btn1.grid(column=2, row=2)
-        self.clear_btn2 = Button(self.lotto_frame, text="Clear2", command=self.clear2)
-        self.clear_btn2.grid(column=4, row=2)
-        self.clear_btn3 = Button(self.lotto_frame, text="Clear3", command=self.clear3)
-        self.clear_btn3.grid(column=6, row=2)
+        self.clear_btn1 = Button(self.lotto_frame, text="Clear", command=self.clear1)
+        self.clear_btn1.grid(column=1, row=3)
+        self.clear_btn2 = Button(self.lotto_frame, text="Clear", command=self.clear2)
+        self.clear_btn2.grid(column=2, row=3)
+        self.clear_btn3 = Button(self.lotto_frame, text="Clear", command=self.clear3)
+        self.clear_btn3.grid(column=3, row=3)
         self.clear_btn = Button(self.lotto_frame, text="Clear All", command=self.clear)
-        self.clear_btn.grid(column=6, row=3)
+        self.clear_btn.grid(column=3, row=8)
         # playsound("audio/game intro.mp3")
 
     def choose_number(self, number):
@@ -268,7 +268,7 @@ class GameScreen:
         self.first_numbs.sort()
         self.second_numbs.sort()
         self.third_numbs.sort()
-        self.gen_numbs.set(self.gene_numb)
+        self.gen_numbs.set("winning combo is " + str(self.gene_numb))
         self.same_number1()
 
     def same_number1(self):
@@ -372,7 +372,9 @@ class GameScreen:
         if len(self.third_numbs) > 0:
             self.numb_ent3.set("")
             self.third_numbs = []
-        self.gen_numbs.set("")
+        if len(self.gene_numb) > 0:
+            self.gen_numbs.set("")
+            self.gene_numb = []
         self.same_ans1.set("")
         self.same_ans2.set("")
         self.same_ans3.set("")
