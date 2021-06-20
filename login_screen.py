@@ -31,32 +31,37 @@ class LoginAccess:
         self.login_frame = LabelFrame(root, padx=50, pady=30, width=378, height=290, bg="#EED313")
         self.login_frame.place(x=200, y=280)
 
+        self.login_pic = PhotoImage(file="images/login logo.PNG")
+        self.canvas1 = Canvas(self.login_frame, width=50, height=45, borderwidth=0, highlightthickness=0, highlightbackground="#FFC107", bd=0 )
+        self.canvas1.create_image(0, 0, anchor=NW, image=self.login_pic)
+        self.canvas1.grid(column=2, row=1)
+
         self.label_name = Label(self.login_frame, text="Name", bg="#EED313")
-        self.label_name.grid(column=1, row=1)
+        self.label_name.grid(column=2, row=2)
 
         self.label_email = Label(self.login_frame, text="Email Address", bg="#EED313")
-        self.label_email.grid(column=1, row=2)
+        self.label_email.grid(column=2, row=4)
 
         self.label_id = Label(self.login_frame, text="ID Number", bg="#EED313")
-        self.label_id.grid(column=1, row=3)
+        self.label_id.grid(column=2, row=6)
 
         self.name_ent = Entry(self.login_frame, textvariable=self.player_name)
-        self.name_ent.grid(column=2, row=1)
+        self.name_ent.grid(column=2, row=3)
 
         self.email_ent = Entry(self.login_frame, textvariable=self.player_email)
-        self.email_ent.grid(column=2, row=2)
+        self.email_ent.grid(column=2, row=5)
 
         self.id_ent = Entry(self.login_frame, textvariable=self.user_id)
-        self.id_ent.grid(column=2, row=3)
+        self.id_ent.grid(column=2, row=7)
 
-        self.log_btn = Button(root, text="Login", command=self.name, bg="#EED313", borderwidth="5", cursor="hand2", font=2, foreground="black")
-        self.log_btn.place(x=200, y=415)
+        self.log_btn = Button(self.login_frame, text="Login", command=self.name, bg="#EED313", borderwidth="5", cursor="hand2", foreground="black")
+        self.log_btn.grid(column=3, row=9)
 
-        self.back_btn = Button(root, text="Back", command=self.back, bg="#EED313", borderwidth="5", cursor="hand2", font=2, foreground="black")
-        self.back_btn.place(x=400, y=415)
+        self.back_btn = Button(self.login_frame, text="Back", command=self.back, bg="#EED313", borderwidth="5", cursor="hand2", foreground="black")
+        self.back_btn.grid(column=3, row=10)
 
-        self.clear_btn = Button(root, text="Clear",command=self.clear, bg="#EED313", borderwidth="5", cursor="hand2", font=2, foreground="black")
-        self.clear_btn.place(x=300, y=415)
+        self.clear_btn = Button(self.login_frame, text="Clear",command=self.clear, bg="#EED313", borderwidth="5", cursor="hand2", foreground="black")
+        self.clear_btn.grid(column=2, row=9)
 
         self.ithuba_logo = PhotoImage(file="images/ithuba.PNG")
 

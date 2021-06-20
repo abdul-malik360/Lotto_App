@@ -1,53 +1,26 @@
-from tkinter import *
-import random
-from tkinter import messagebox
-from playsound import playsound
+same_number = 0
+        winnings = 0
+        prize = [10000000, 8584, 2384, 100.50, 20, 0, 0]
+        for i in len(self.same_ans1):
+            if i in self.gene_numb:
+                same_number += 1
+            if same_number == 6:
+                winnings = prize[6]
+            elif same_number == 5:
+                winnings = prize[5]
+            elif same_number == 4:
+                winnings = prize[4]
+            elif same_number == 3:
+                winnings = prize[3]
+            elif same_number == 2:
+                winnings = prize[2]
 
-root = Tk()
-root.geometry("500x500")
-root.title("Generate Your Numbers")
-
-numb_ans = StringVar()
-numb_ent = StringVar()
-same_ans = StringVar()
-mylist = []
-mynewlist = [numb_ent]
-same_numb = []
-
-ent_numb = Entry(root, textvariable=numb_ent)
-ent_numb.place(x=50, y=25)
-Label(root, textvariable=numb_ans, bg="sky blue").place(x=50, y=50)
-Label(root, textvariable=same_ans, bg="sky blue").place(x=50, y=80)
-
-
-def generate():
-    x = 0
-    playsound("audio/here they come.mp3")
-    while x < 6:
-        number = random.randint(1, 49)
-        if number not in mylist:
-            mylist.append(number)
-            x = x + 1
-
-    else:
-        x = x - 1
-
-    mylist.sort()
-    mynewlist.sort()
-    numb_ans.set(mylist)
+        if len(self.first_numbs) == 6:
+            user_prize = float(winnings)
+            self.prize1.set(str(user_prize))
+            self.lotto1.set(self.gene_numb)
+            return user_prize
+        # else:
+        #     messagebox.showinfo("Error", "Please use all your tries first")
 
 
-def samenumb():
-    for i in numb_ans.get():
-        if i in numb_ent.get():
-            same_numb.append(i)
-            same_ans.set(same_numb)
-
-
-gen_btn = Button(root, text="Generate", command=generate)
-gen_btn.place(x=50, y=100)
-
-ge_btn = Button(root, text="check same", command=samenumb)
-ge_btn.place(x=150, y=100)
-
-root.mainloop()

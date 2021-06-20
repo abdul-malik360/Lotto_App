@@ -1,5 +1,6 @@
 from tkinter import *
 from playsound import playsound
+import pyttsx3
 
 root = Tk()
 root.geometry("600x600")
@@ -33,6 +34,7 @@ class RulesScreen:
                           text="Enter your Name, Email Address and ID Number""\n""Only valid inputs allows you to play" "\n""\n" "Age required to play game is 18 and older" "\n""\n" "You select a set of six numbers and run the game" "\n""\n" "You're allowed to generate 3 sets " "\n""\n" "Your selected set is compared to the game's lucky draw" "\n""\n" "Stand a chance to win R10 000 000" "\n""\n" "If you meet the age requirement, click sign in""\n""If not, click Mini Game",
                           bg="#EED313")
         self.rules_txt.place(x=0, y=5)
+        self.engine = pyttsx3.init()
 
         self.sign_in = Button(root, text="Sign in", bg="#EED313", command=self.login_screen, cursor="hand2", borderwidth=2, highlightthickness=1, highlightbackground="#FFC107")
         self.sign_in.place(x=200, y=500)
@@ -54,7 +56,10 @@ class RulesScreen:
         import mini_game
 
     def rules(self):
-        playsound("audio/rules.mp3")
+        self.engine.setProperty("rate", 150)
+        self.engine.say(
+            "Enter your Name, Email Address and ID Number. Only valid inputs allow you to play. Age required to play game is 18 and older. You select a set of six numbers and run the game. You're allowed to generate 3 sets. Your selected set is compared to the game's lucky draw. Stand a chance to win ten million rand. If you meet the age requirement, click sign in. If not, click Mini Game.")
+        self.engine.runAndWait()
 
 
 b = RulesScreen(root)

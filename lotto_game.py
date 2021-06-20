@@ -4,7 +4,7 @@ from playsound import playsound
 from tkinter import messagebox
 
 root = Tk()
-root.geometry("600x600")
+root.geometry("700x700")
 root.title("Welcome To Ithuba Lotto")
 root.config(bg="#FFC107")
 
@@ -13,29 +13,34 @@ class GameScreen:
     numb_ent1 = StringVar()
     numb_ent2 = StringVar()
     numb_ent3 = StringVar()
+
     gen_numbs = StringVar()
+
     same_ans1 = StringVar()
     same_ans2 = StringVar()
     same_ans3 = StringVar()
+
     first_numbs = []
     second_numbs = []
     third_numbs = []
+
     gene_numb = []
+
     same_numb1 = []
     same_numb2 = []
     same_numb3 = []
 
     def __init__(self, master):
         self.lotto_logo = PhotoImage(file="images/logo small.PNG")
-        self.ithuba_logo = PhotoImage(file="images/ithuba.PNG")
+        self.ithuba_logo = PhotoImage(file="images/ithuba small.PNG")
 
         self.canvas = Canvas(root, width=89, height=60, highlightthickness="0")
         self.canvas.create_image(0, 0, anchor=NW, image=self.lotto_logo,)
         self.canvas.place(x=10, y=10)
 
-        self.canvas = Canvas(root, width=178, height=55, highlightthickness="0")
+        self.canvas = Canvas(root, width=90, height=28, highlightthickness="0")
         self.canvas.create_image(0, 0, anchor=NW, image=self.ithuba_logo,)
-        self.canvas.place(x=400, y=520)
+        self.canvas.place(x=500, y=565)
 
         self.number_1 = PhotoImage(file="images/buttons/1.png")
         self.number_2 = PhotoImage(file="images/buttons/2.png")
@@ -188,38 +193,48 @@ class GameScreen:
         self.btn_49 = Button(root, image=self.number_49, command=lambda: self.choose_number(49), borderwidth=0, highlightthickness=0, highlightbackground="#FFC107", bd=0, bg="#FFC107")
         self.btn_49.place(x=430, y=310)
 
-        self.ent1_label = Label(master, text="", textvariable=self.numb_ent1)
-        self.ent1_label.place(x=50, y=370)
+        self.lotto_frame = LabelFrame(root, padx=10, pady=30, width=500, height=190, bg="#EED313")
+        self.lotto_frame.place(x=50, y=370)
 
-        self.ent2_label = Label(master, text="", textvariable=self.numb_ent2)
-        self.ent2_label.place(x=50, y=390)
+        self.ent1_label = Label(self.lotto_frame, text="Your Lucky List 1", width=13, bg="#EED313")
+        self.ent1_label.grid(column=1, row=1)
+        self.ent2_label = Label(self.lotto_frame, text="Your Lucky List 2", width=13, bg="#EED313")
+        self.ent2_label.grid(column=3, row=1)
+        self.ent3_label = Label(self.lotto_frame, text="Your Lucky List 3", width=13, bg="#EED313")
+        self.ent3_label.grid(column=5, row=1)
 
-        self.ent3_label = Label(master, text="", textvariable=self.numb_ent3)
-        self.ent3_label.place(x=50, y=410)
+        self.ent1 = Label(self.lotto_frame, text="", textvariable=self.numb_ent1, width=13, bg="#FFC107")
+        self.ent1.grid(column=1, row=2)
+        self.ent2 = Label(self.lotto_frame, text="", textvariable=self.numb_ent2, width=13, bg="#FFC107")
+        self.ent2.grid(column=3, row=2)
+        self.ent3 = Label(self.lotto_frame, text="", textvariable=self.numb_ent3, width=13, bg="#FFC107")
+        self.ent3.grid(column=5, row=2)
 
-        self.generated = Label(root, textvariable=self.gen_numbs, bg="sky blue").place(x=50, y=430)
+        self.generated_lab = Label(self.lotto_frame, textvariable=self.gen_numbs, width=13, bg="#FFC107")
+        self.generated_lab.grid(column=3, row=3)
 
         self.gen_btn = Button(root, text="Generate", command=self.generate)
-        self.gen_btn.place(x=350, y=530)
+        self.gen_btn.place(x=300, y=530)
 
         self.same_lab1 = Label(root, textvariable=self.same_ans1, bg="sky blue").place(x=50, y=470)
         self.same_lab2 = Label(root, textvariable=self.same_ans2, bg="sky blue").place(x=50, y=490)
         self.same_lab3 = Label(root, textvariable=self.same_ans3, bg="sky blue").place(x=50, y=510)
 
-        self.check_btn = Button(root, text="check same", command=self.same_number1)
-        self.check_btn.place(x=350, y=450)
-        self.check_btn = Button(root, text="check same", command=self.same_number2)
-        self.check_btn.place(x=370, y=470)
-        self.check_btn = Button(root, text="check same", command=self.same_number3)
-        self.check_btn.place(x=390, y=490)
+        self.check_btn1 = Button(root, text="check same1", command=self.same_number1)
+        self.check_btn1.place(x=350, y=500)
+        self.check_btn2 = Button(root, text="check same2", command=self.same_number2)
+        self.check_btn2.place(x=370, y=530)
+        self.check_btn3 = Button(root, text="check same3", command=self.same_number3)
+        self.check_btn3.place(x=390, y=560)
 
-
-        self.clear_btn1 = Button(root, text="Clear1", command=self.clear1)
-        self.clear_btn1.place(x=150, y=370)
-        self.clear_btn2 = Button(root, text="Clear2", command=self.clear2)
-        self.clear_btn2.place(x=150, y=390)
-        self.clear_btn3 = Button(root, text="Clear3", command=self.clear3)
-        self.clear_btn3.place(x=150, y=410)
+        self.clear_btn1 = Button(self.lotto_frame, text="Clear1", command=self.clear1)
+        self.clear_btn1.grid(column=2, row=2)
+        self.clear_btn2 = Button(self.lotto_frame, text="Clear2", command=self.clear2)
+        self.clear_btn2.grid(column=4, row=2)
+        self.clear_btn3 = Button(self.lotto_frame, text="Clear3", command=self.clear3)
+        self.clear_btn3.grid(column=6, row=2)
+        self.clear_btn = Button(self.lotto_frame, text="Clear All", command=self.clear)
+        self.clear_btn.grid(column=6, row=3)
 
     def choose_number(self, number):
         if len(self.first_numbs) < 6 and number not in self.first_numbs:
@@ -235,7 +250,6 @@ class GameScreen:
             messagebox.showerror("Entries full", "Play Game")
         else:
             messagebox.askretrycancel("Entry Invalid", "You can only choose one number per Entry")
-
 
     def generate(self):
         x = 0
@@ -257,30 +271,56 @@ class GameScreen:
     def same_number1(self):
         self.same_numb1 = set(self.gene_numb).intersection(set(self.first_numbs))
         self.same_ans1.set(self.same_numb1)
-        same_number = 0
-        for i in self.first_numbs:
-            if i in self.gene_numb:
-                same_number += 1
-            if same_number == 6:
-                messagebox.showinfo("congrats", "you won 10 000 000")
-            elif same_number == 5:
-                messagebox.showinfo("congrats", "you won 8,584")
-            elif same_number == 4:
-                messagebox.showinfo("congrats", "you won 2,384")
-            elif same_number == 3:
-                messagebox.showinfo("congrats", "you won 100.50")
-            elif same_number == 2:
-                messagebox.showinfo("congrats", "you won 20")
-
-
+        if len(self.same_numb1) == 6:
+            print("6")
+        elif len(self.same_numb1) == 5:
+            print("5")
+        elif len(self.same_numb1) == 4:
+            print("4")
+        elif len(self.same_numb1) == 3:
+            print("3")
+        elif len(self.same_numb1) == 2:
+            print("2")
+        elif len(self.same_numb1) == 1:
+            print("0")
+        elif len(self.same_numb1) == 0:
+            print("0")
 
     def same_number2(self):
         self.same_numb2 = set(self.gene_numb).intersection(set(self.second_numbs))
         self.same_ans2.set(self.same_numb2)
+        if len(self.same_numb2) == 6:
+            print("6")
+        elif len(self.same_numb2) == 5:
+            print("5")
+        elif len(self.same_numb2) == 4:
+            print("4")
+        elif len(self.same_numb2) == 3:
+            print("3")
+        elif len(self.same_numb2) == 2:
+            print("2")
+        elif len(self.same_numb2) == 1:
+            print("0")
+        elif len(self.same_numb2) == 0:
+            print("0")
 
     def same_number3(self):
         self.same_numb3 = set(self.gene_numb).intersection(set(self.third_numbs))
         self.same_ans3.set(self.same_numb3)
+        if len(self.same_numb3) == 6:
+            print("6")
+        elif len(self.same_numb3) == 5:
+            print("5")
+        elif len(self.same_numb3) == 4:
+            print("4")
+        elif len(self.same_numb3) == 3:
+            print("3")
+        elif len(self.same_numb3) == 2:
+            print("2")
+        elif len(self.same_numb3) == 1:
+            print("0")
+        elif len(self.same_numb3) == 0:
+            print("0")
 
     def clear1(self):
         if len(self.first_numbs) > 0:
@@ -297,6 +337,20 @@ class GameScreen:
             self.numb_ent3.set("")
             self.third_numbs = []
 
+    def clear(self):
+        if len(self.first_numbs) > 0:
+            self.numb_ent1.set("")
+            self.first_numbs = []
+        if len(self.second_numbs) > 0:
+            self.numb_ent2.set("")
+            self.second_numbs = []
+        if len(self.third_numbs) > 0:
+            self.numb_ent3.set("")
+            self.third_numbs = []
+        self.gen_numbs.set("")
+        self.same_ans1.set("")
+        self.same_ans2.set("")
+        self.same_ans3.set("")
 
 
 e = GameScreen(root)
