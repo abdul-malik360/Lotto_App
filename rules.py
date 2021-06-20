@@ -3,7 +3,7 @@ from playsound import playsound
 import pyttsx3
 
 root = Tk()
-root.geometry("600x600")
+root.geometry("700x700")
 root.title("Rules and Prizes")
 root.config(bg="#FFC107")
 
@@ -17,18 +17,18 @@ class RulesScreen:
         # place image
         self.canvas = Canvas(root, width=154, height=148, highlightthickness="0")
         self.canvas.create_image(0, 0, anchor=NW, image=self.lotto_balls)
-        self.canvas.place(x=10, y=200)
+        self.canvas.place(x=10, y=250)
 
         self.canvas = Canvas(root, width=270, height=180, highlightthickness="0")
-        self.canvas.create_image(0, 0, anchor=NW, image=self.lotto_logo, )
-        self.canvas.place(x=165, y=10)
+        self.canvas.create_image(0, 0, anchor=NW, image=self.lotto_logo)
+        self.canvas.place(x=220, y=10)
 
         self.canvas = Canvas(root, width=178, height=55, highlightthickness="0")
-        self.canvas.create_image(0, 0, anchor=NW, image=self.ithuba_logo, )
-        self.canvas.place(x=400, y=520)
+        self.canvas.create_image(0, 0, anchor=NW, image=self.ithuba_logo)
+        self.canvas.place(x=500, y=620)
 
         self.rules_frame = LabelFrame(root, text="The Rules of the Game", width=378, height=290, bg="#EED313")
-        self.rules_frame.place(x=200, y=200)
+        self.rules_frame.place(x=200, y=250)
 
         self.rules_txt = Label(self.rules_frame,
                           text="Enter your Name, Email Address and ID Number""\n""Only valid inputs allows you to play" "\n""\n" "Age required to play game is 18 and older" "\n""\n" "You select a set of six numbers and run the game" "\n""\n" "You're allowed to generate 3 sets " "\n""\n" "Your selected set is compared to the game's lucky draw" "\n""\n" "Stand a chance to win R10 000 000" "\n""\n" "If you meet the age requirement, click sign in""\n""If not, click Mini Game",
@@ -37,14 +37,14 @@ class RulesScreen:
         self.engine = pyttsx3.init()
 
         self.sign_in = Button(root, text="Sign in", bg="#EED313", command=self.login_screen, cursor="hand2", borderwidth=2, highlightthickness=1, highlightbackground="#FFC107")
-        self.sign_in.place(x=200, y=500)
+        self.sign_in.place(x=200, y=540)
 
         self.mini_game = Button(root, text="Mini Game", bg="#EED313", command=self.mini_game_screen, cursor="hand2", borderwidth=2, highlightthickness=1, highlightbackground="#FFC107")
-        self.mini_game.place(x=280, y=500)
+        self.mini_game.place(x=280, y=540)
 
         self.speaker = PhotoImage(file="images/speaker.PNG")
         self.speaker_btn = Button(root, image=self.speaker, command=self.rules, cursor="hand2", borderwidth=2, highlightthickness=1, highlightbackground="#FFC107", bg="#FFC107")
-        self.speaker_btn.place(x=540, y=459)
+        self.speaker_btn.place(x=540, y=500)
 
 
     def login_screen(self):

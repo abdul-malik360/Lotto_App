@@ -6,7 +6,7 @@ import re
 from playsound import playsound
 
 root = Tk()
-root.geometry("600x600")
+root.geometry("700x700")
 root.title("Login Screen")
 root.config(bg="#FFC107")
 
@@ -21,7 +21,7 @@ class LoginAccess:
         self.lotto_logo = PhotoImage(file="images/loto logo 1.png")
         self.canvas = Canvas(master, width=270, height=180, highlightthickness="0")
         self.canvas.create_image(0, 0, anchor=NW, image=self.lotto_logo)
-        self.canvas.place(x=165, y=10)
+        self.canvas.place(x=220, y=10)
 
         # self.sa_flag = PhotoImage(file="images/sa flag.png")
         # self.canvas = Canvas(master, width=158, height=100, highlightthickness="0")
@@ -29,7 +29,7 @@ class LoginAccess:
         # self.canvas.place(x=10, y=280)
 
         self.login_frame = LabelFrame(master, padx=50, pady=30, width=378, height=290, bg="#EED313")
-        self.login_frame.place(x=190, y=230)
+        self.login_frame.place(x=230, y=250)
 
         self.login_pic = PhotoImage(file="images/login logo.PNG")
         self.canvas1 = Canvas(self.login_frame, width=50, height=45, borderwidth=0, highlightthickness=0, highlightbackground="#FFC107", bd=0 )
@@ -58,20 +58,19 @@ class LoginAccess:
         self.id_ent.grid(column=2, row=7)
 
         self.log_btn = Button(master, text="Login", command=self.name, bg="#EED313", borderwidth="2", cursor="hand2", foreground="black")
-        self.log_btn.place(x=325, y=430)
+        self.log_btn.place(x=365, y=450)
 
         self.back_icon = PhotoImage(file="images/back btn.PNG")
         self.back_btn = Button(master, image=self.back_icon, command=self.back, bg="#EED313", cursor="hand2", borderwidth=1, highlightthickness=0, highlightbackground="#FFC107", bd=0)
-        self.back_btn.place(x=385, y=235)
+        self.back_btn.place(x=425, y=255)
 
         self.clear_btn = Button(master, text="Clear",command=self.clear, bg="#EED313", borderwidth="2", cursor="hand2", foreground="black")
-        self.clear_btn.place(x=280, y=430)
+        self.clear_btn.place(x=310, y=450)
 
         self.ithuba_logo = PhotoImage(file="images/ithuba.PNG")
-
         self.canvas = Canvas(master, width=178, height=55, highlightthickness="0")
         self.canvas.create_image(0, 0, anchor=NW, image=self.ithuba_logo,)
-        self.canvas.place(x=400, y=520)
+        self.canvas.place(x=500, y=620)
 
     def name(self):
         try:

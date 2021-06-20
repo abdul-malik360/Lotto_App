@@ -33,7 +33,7 @@ class GameScreen:
     def __init__(self, master):
         self.lotto_logo = PhotoImage(file="images/logo small.PNG")
         self.ithuba_logo = PhotoImage(file="images/ithuba small.PNG")
-        self.lucky_numbers = PhotoImage(file="images/lucky numbs.PNG")
+        self.lucky_numbers = PhotoImage(file="images/heading.PNG")
 
         self.canvas = Canvas(root, width=89, height=60, highlightthickness="0")
         self.canvas.create_image(0, 0, anchor=NW, image=self.lotto_logo,)
@@ -43,9 +43,11 @@ class GameScreen:
         self.canvas.create_image(0, 0, anchor=NW, image=self.ithuba_logo,)
         self.canvas.place(x=600, y=10)
 
-        self.canvas = Canvas(root, width=160, height=90, highlightthickness="0")
+        self.canvas = Canvas(root, width=223, height=120, highlightthickness="0")
         self.canvas.create_image(0, 0, anchor=NW, image=self.lucky_numbers, )
-        self.canvas.place(x=150, y=5)
+        self.canvas.place(x=220, y=15)
+
+
 
         self.number_1 = PhotoImage(file="images/buttons/1.png")
         self.number_2 = PhotoImage(file="images/buttons/2.png")
