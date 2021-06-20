@@ -237,6 +237,7 @@ class GameScreen:
         self.clear_btn.grid(column=6, row=3)
 
     def choose_number(self, number):
+        playsound("audio/click.mp3")
         if len(self.first_numbs) < 6 and number not in self.first_numbs:
             self.first_numbs.append(number)
             self.numb_ent1.set(self.first_numbs)
@@ -339,21 +340,25 @@ class GameScreen:
             written.write("\n")
 
     def clear1(self):
+        playsound("audio/sweep.mp3")
         if len(self.first_numbs) > 0:
             self.numb_ent1.set("")
             self.first_numbs = []
 
     def clear2(self):
+        playsound("audio/sweep.mp3")
         if len(self.second_numbs) > 0:
             self.numb_ent2.set("")
             self.second_numbs = []
 
     def clear3(self):
+        playsound("audio/sweep.mp3")
         if len(self.third_numbs) > 0:
             self.numb_ent3.set("")
             self.third_numbs = []
 
     def clear(self):
+        playsound("audio/sweeep.mp3")
         if len(self.first_numbs) > 0:
             self.numb_ent1.set("")
             self.first_numbs = []
