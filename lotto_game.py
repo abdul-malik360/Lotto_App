@@ -287,7 +287,7 @@ class GameScreen:
             prize = 0
         elif len(self.same_numb1) == 0:
             prize = 0
-        self.same_ans1.set("You got " + str(len(self.same_numb1)) + " winnings. Your cash prize is R" + str(prize))
+        self.same_ans1.set("In your first guess you got " + str(len(self.same_numb1)) + " winnings. Your cash prize is R" + str(prize))
 
     def same_number2(self):
         global prize
@@ -307,7 +307,7 @@ class GameScreen:
             prize = 0
         elif len(self.same_numb2) == 0:
             prize = 0
-        self.same_ans2.set("You got " + str(len(self.same_numb2)) + " winnings. Your cash prize is R" + str(prize))
+        self.same_ans2.set("In your second guess you got " + str(len(self.same_numb2)) + " winnings. Your cash prize is R" + str(prize))
 
     def same_number3(self):
         global prize
@@ -327,10 +327,17 @@ class GameScreen:
             prize = 0
         elif len(self.same_numb3) == 0:
             prize = 0
-        self.same_ans3.set("You got " + str(len(self.same_numb3)) + " winnings. Your cash prize is R" + str(prize))
-        with open("player_id.txt", "a+") as written:
+        self.same_ans3.set("In your third guess you got " + str(len(self.same_numb3)) + " winnings. Your cash prize is R" + str(prize))
+        with open("Game_Info.txt", "a+") as written:
             written.write(str(self.first_numbs))
             written.write("\n")
+            written.write(str(self.second_numbs))
+            written.write("\n")
+            written.write(str(self.third_numbs))
+            written.write("\n")
+            written.write(str(self.gene_numb))
+            written.write("\n")
+
     def clear1(self):
         if len(self.first_numbs) > 0:
             self.numb_ent1.set("")

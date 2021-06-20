@@ -89,7 +89,7 @@ class LoginAccess:
             else:
                 messagebox.showerror("Login Failed", "Please enter a user name")
             self.email()
-            with open("player_id.txt", "w") as written:
+            with open("Game_Info.txt", "w") as written:
                 written.write(self.player_name.get())
                 written.write("\n")
                 written.write(self.player_email.get())
