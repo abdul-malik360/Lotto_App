@@ -19,17 +19,17 @@ class LoginAccess:
 
     def __init__(self, master):
         self.lotto_logo = PhotoImage(file="images/loto logo 1.png")
-        self.canvas = Canvas(root, width=270, height=180, highlightthickness="0")
+        self.canvas = Canvas(master, width=270, height=180, highlightthickness="0")
         self.canvas.create_image(0, 0, anchor=NW, image=self.lotto_logo)
         self.canvas.place(x=165, y=10)
 
-        self.sa_flag = PhotoImage(file="images/sa flag.png")
-        self.canvas = Canvas(root, width=158, height=100, highlightthickness="0")
-        self.canvas.create_image(0, 0, anchor=NW, image=self.sa_flag)
-        self.canvas.place(x=10, y=280)
+        # self.sa_flag = PhotoImage(file="images/sa flag.png")
+        # self.canvas = Canvas(master, width=158, height=100, highlightthickness="0")
+        # self.canvas.create_image(0, 0, anchor=NW, image=self.sa_flag)
+        # self.canvas.place(x=10, y=280)
 
-        self.login_frame = LabelFrame(root, padx=50, pady=30, width=378, height=290, bg="#EED313")
-        self.login_frame.place(x=200, y=280)
+        self.login_frame = LabelFrame(master, padx=50, pady=30, width=378, height=290, bg="#EED313")
+        self.login_frame.place(x=190, y=230)
 
         self.login_pic = PhotoImage(file="images/login logo.PNG")
         self.canvas1 = Canvas(self.login_frame, width=50, height=45, borderwidth=0, highlightthickness=0, highlightbackground="#FFC107", bd=0 )
@@ -45,6 +45,9 @@ class LoginAccess:
         self.label_id = Label(self.login_frame, text="ID Number", bg="#EED313")
         self.label_id.grid(column=2, row=6)
 
+        self.empty_lab = Label(self.login_frame, text="", bg="#EED313")
+        self.empty_lab.grid(column=2, row=8)
+
         self.name_ent = Entry(self.login_frame, textvariable=self.player_name)
         self.name_ent.grid(column=2, row=3)
 
@@ -54,18 +57,19 @@ class LoginAccess:
         self.id_ent = Entry(self.login_frame, textvariable=self.user_id)
         self.id_ent.grid(column=2, row=7)
 
-        self.log_btn = Button(self.login_frame, text="Login", command=self.name, bg="#EED313", borderwidth="5", cursor="hand2", foreground="black")
-        self.log_btn.grid(column=3, row=9)
+        self.log_btn = Button(master, text="Login", command=self.name, bg="#EED313", borderwidth="2", cursor="hand2", foreground="black")
+        self.log_btn.place(x=325, y=430)
 
-        self.back_btn = Button(self.login_frame, text="Back", command=self.back, bg="#EED313", borderwidth="5", cursor="hand2", foreground="black")
-        self.back_btn.grid(column=3, row=10)
+        self.back_icon = PhotoImage(file="images/back btn.PNG")
+        self.back_btn = Button(master, image=self.back_icon, command=self.back, bg="#EED313", cursor="hand2", borderwidth=1, highlightthickness=0, highlightbackground="#FFC107", bd=0)
+        self.back_btn.place(x=385, y=235)
 
-        self.clear_btn = Button(self.login_frame, text="Clear",command=self.clear, bg="#EED313", borderwidth="5", cursor="hand2", foreground="black")
-        self.clear_btn.grid(column=2, row=9)
+        self.clear_btn = Button(master, text="Clear",command=self.clear, bg="#EED313", borderwidth="2", cursor="hand2", foreground="black")
+        self.clear_btn.place(x=280, y=430)
 
         self.ithuba_logo = PhotoImage(file="images/ithuba.PNG")
 
-        self.canvas = Canvas(root, width=178, height=55, highlightthickness="0")
+        self.canvas = Canvas(master, width=178, height=55, highlightthickness="0")
         self.canvas.create_image(0, 0, anchor=NW, image=self.ithuba_logo,)
         self.canvas.place(x=400, y=520)
 
@@ -131,6 +135,7 @@ class LoginAccess:
         self.all_func()
 
     def all_func(self):
+
         messagebox.showinfo("Access Granted", "Let's Play")
         playsound("audio/game intro.mp3")
         root.destroy()
