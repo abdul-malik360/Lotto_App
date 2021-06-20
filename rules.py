@@ -48,6 +48,7 @@ class RulesScreen:
 
 
     def login_screen(self):
+        playsound("audio/i hope you're ready.mp3")
         root.destroy()
         import login_screen
 

@@ -216,16 +216,9 @@ class GameScreen:
         self.gen_btn = Button(root, text="Generate", command=self.generate)
         self.gen_btn.place(x=300, y=530)
 
-        self.same_lab1 = Label(root, textvariable=self.same_ans1, bg="sky blue").place(x=50, y=470)
-        self.same_lab2 = Label(root, textvariable=self.same_ans2, bg="sky blue").place(x=50, y=490)
-        self.same_lab3 = Label(root, textvariable=self.same_ans3, bg="sky blue").place(x=50, y=510)
-
-        self.check_btn1 = Button(root, text="check same1", command=self.same_number1)
-        self.check_btn1.place(x=350, y=500)
-        self.check_btn2 = Button(root, text="check same2", command=self.same_number2)
-        self.check_btn2.place(x=370, y=530)
-        self.check_btn3 = Button(root, text="check same3", command=self.same_number3)
-        self.check_btn3.place(x=390, y=560)
+        self.same_lab1 = Label(self.lotto_frame, textvariable=self.same_ans1, bg="sky blue").grid(column=1, row=5)
+        self.same_lab2 = Label(self.lotto_frame, textvariable=self.same_ans2, bg="sky blue").grid(column=1, row=6)
+        self.same_lab3 = Label(self.lotto_frame, textvariable=self.same_ans3, bg="sky blue").grid(column=1, row=7)
 
         self.clear_btn1 = Button(self.lotto_frame, text="Clear1", command=self.clear1)
         self.clear_btn1.grid(column=2, row=2)
@@ -235,6 +228,7 @@ class GameScreen:
         self.clear_btn3.grid(column=6, row=2)
         self.clear_btn = Button(self.lotto_frame, text="Clear All", command=self.clear)
         self.clear_btn.grid(column=6, row=3)
+        playsound("audio/game intro.mp3")
 
     def choose_number(self, number):
         playsound("audio/click.mp3")
@@ -268,6 +262,7 @@ class GameScreen:
         self.second_numbs.sort()
         self.third_numbs.sort()
         self.gen_numbs.set(self.gene_numb)
+        self.same_number1()
 
     def same_number1(self):
         global prize
@@ -288,7 +283,8 @@ class GameScreen:
             prize = 0
         elif len(self.same_numb1) == 0:
             prize = 0
-        self.same_ans1.set("In your first guess you got " + str(len(self.same_numb1)) + " winnings. Your cash prize is R" + str(prize))
+        self.same_ans1.set("You got " + str(len(self.same_numb1)) + " winnings. Your cash prize is R" + str(prize))
+        self.same_number2()
 
     def same_number2(self):
         global prize
@@ -308,7 +304,8 @@ class GameScreen:
             prize = 0
         elif len(self.same_numb2) == 0:
             prize = 0
-        self.same_ans2.set("In your second guess you got " + str(len(self.same_numb2)) + " winnings. Your cash prize is R" + str(prize))
+        self.same_ans2.set("You got " + str(len(self.same_numb2)) + " winnings. Your cash prize is R" + str(prize))
+        self.same_number3()
 
     def same_number3(self):
         global prize
@@ -328,7 +325,7 @@ class GameScreen:
             prize = 0
         elif len(self.same_numb3) == 0:
             prize = 0
-        self.same_ans3.set("In your third guess you got " + str(len(self.same_numb3)) + " winnings. Your cash prize is R" + str(prize))
+        self.same_ans3.set("You got " + str(len(self.same_numb3)) + " winnings. Your cash prize is R" + str(prize))
         with open("Game_Info.txt", "a+") as written:
             written.write(str(self.first_numbs))
             written.write("\n")

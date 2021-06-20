@@ -135,17 +135,18 @@ class LoginAccess:
         self.all_func()
 
     def all_func(self):
-
+        playsound("audio/access granted.mp3")
         messagebox.showinfo("Access Granted", "Let's Play")
-        playsound("audio/game intro.mp3")
         root.destroy()
         import lotto_game
 
     def back(self):
+        playsound("audio/click.mp3")
         root.destroy()
         import main
 
     def clear(self):
+        playsound("audio/sweep.mp3")
         self.name_ent.delete(0, END)
         self.email_ent.delete(0, END)
         self.id_ent.delete(0, END)
