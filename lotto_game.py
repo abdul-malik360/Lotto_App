@@ -269,59 +269,68 @@ class GameScreen:
         self.gen_numbs.set(self.gene_numb)
 
     def same_number1(self):
+        global prize
         self.same_numb1 = set(self.gene_numb).intersection(set(self.first_numbs))
-        self.same_ans1.set(self.same_numb1)
+        # self.same_ans1.set(len(self.same_numb1))
         if len(self.same_numb1) == 6:
-            print("6")
+            prize = 10000000
+
         elif len(self.same_numb1) == 5:
-            print("5")
+            prize = 8584
         elif len(self.same_numb1) == 4:
-            print("4")
+            prize = 2384
         elif len(self.same_numb1) == 3:
-            print("3")
+            prize = 100.50
         elif len(self.same_numb1) == 2:
-            print("2")
+            prize = 20
         elif len(self.same_numb1) == 1:
-            print("0")
+            prize = 0
         elif len(self.same_numb1) == 0:
-            print("0")
+            prize = 0
+        self.same_ans1.set("You got " + str(len(self.same_numb1)) + " winnings. Your cash prize is R" + str(prize))
 
     def same_number2(self):
+        global prize
         self.same_numb2 = set(self.gene_numb).intersection(set(self.second_numbs))
-        self.same_ans2.set(self.same_numb2)
+        # self.same_ans2.set(len(self.same_numb2))
         if len(self.same_numb2) == 6:
-            print("6")
+            prize = 10000000
         elif len(self.same_numb2) == 5:
-            print("5")
+            prize = 8584
         elif len(self.same_numb2) == 4:
-            print("4")
+            prize = 2384
         elif len(self.same_numb2) == 3:
-            print("3")
+            prize = 100.50
         elif len(self.same_numb2) == 2:
-            print("2")
+            prize = 20
         elif len(self.same_numb2) == 1:
-            print("0")
+            prize = 0
         elif len(self.same_numb2) == 0:
-            print("0")
+            prize = 0
+        self.same_ans2.set("You got " + str(len(self.same_numb2)) + " winnings. Your cash prize is R" + str(prize))
 
     def same_number3(self):
+        global prize
         self.same_numb3 = set(self.gene_numb).intersection(set(self.third_numbs))
-        self.same_ans3.set(self.same_numb3)
+        # self.same_ans3.set(len(self.same_numb3))
         if len(self.same_numb3) == 6:
-            print("6")
+            prize = 10000000
         elif len(self.same_numb3) == 5:
-            print("5")
+            prize = 8584
         elif len(self.same_numb3) == 4:
-            print("4")
+            prize = 2384
         elif len(self.same_numb3) == 3:
-            print("3")
+            prize = 100.50
         elif len(self.same_numb3) == 2:
-            print("2")
+            prize = 20
         elif len(self.same_numb3) == 1:
-            print("0")
+            prize = 0
         elif len(self.same_numb3) == 0:
-            print("0")
-
+            prize = 0
+        self.same_ans3.set("You got " + str(len(self.same_numb3)) + " winnings. Your cash prize is R" + str(prize))
+        with open("player_id.txt", "a+") as written:
+            written.write(str(self.first_numbs))
+            written.write("\n")
     def clear1(self):
         if len(self.first_numbs) > 0:
             self.numb_ent1.set("")
