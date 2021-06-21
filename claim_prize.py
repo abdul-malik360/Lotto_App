@@ -63,6 +63,11 @@ class CurrencyConverter:
         self.bank_options.config(width=15)
         self.bank_options.grid(column=2, row=1, padx=10, pady=10)
 
+        self.account_lab = Label(self.bank_frame, text="Account holder: ")
+        self.account_lab.grid(column=1, row=2)
+        self.account_numb_lab = Label(self.bank_frame, text="Account number: ")
+        self.account_numb_lab.grid(column=1, row=3)
+
         self.account_name = Entry(self.bank_frame)
         self.account_name.grid(column=2, row=2, padx=10, pady=10)
         self.account_number = Entry(self.bank_frame)
