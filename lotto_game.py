@@ -242,9 +242,9 @@ class GameScreen:
             self.third_numbs.append(number)
             self.numb_ent3.set(self.third_numbs)
         elif len(self.third_numbs) == 6:
-            messagebox.showerror("Entries full", "Play Game")
+            messagebox.showinfo("Entries full", "Play Game")
         else:
-            messagebox.askretrycancel("Entry Invalid", "You can only choose one number per Entry")
+            messagebox.showerror("Entry Invalid", "You can only choose one number per Entry")
 
     def generate(self):
         x = 0
@@ -332,6 +332,7 @@ class GameScreen:
         messagebox.showinfo("Results of list 3",
                             "You got " + str(len(self.same_numb3)) + " correct numbers. Your cash prize is R" + str(prize3))
         messagebox.showinfo("Total Winnings", "Your total Cash Prize is R" + str(prize1 + prize2 + prize3))
+
         # self.same_ans3.set("You got " + str(len(self.same_numb3)) + " winnings. Your cash prize is R" + str(prize))
         with open("Game_Info.txt", "a+") as written:
             written.write(str(self.first_numbs))
@@ -342,6 +343,7 @@ class GameScreen:
             written.write("\n")
             written.write(str(self.gene_numb))
             written.write("\n")
+        self.play_again()
 
     def clear1(self):
         playsound("audio/sweep.mp3")
@@ -361,23 +363,33 @@ class GameScreen:
             self.numb_ent3.set("")
             self.third_numbs = []
 
-    def clear(self):
-        playsound("audio/sweeep.mp3")
-        if len(self.first_numbs) > 0:
-            self.numb_ent1.set("")
-            self.first_numbs = []
-        if len(self.second_numbs) > 0:
-            self.numb_ent2.set("")
-            self.second_numbs = []
-        if len(self.third_numbs) > 0:
-            self.numb_ent3.set("")
-            self.third_numbs = []
-        if len(self.gene_numb) > 0:
-            self.gen_numbs.set("")
-            self.gene_numb = []
-        self.same_ans1.set("")
-        self.same_ans2.set("")
-        self.same_ans3.set("")
+    def play_again(self):
+        if messagebox.askyesno("Retry", "Do you want to play again") == True:
+            playsound("audio/change your luck.mp3")
+            if len(self.first_numbs) > 0:
+                self.numb_ent1.set("")
+                self.first_numbs = []
+            if len(self.second_numbs) > 0:
+                self.numb_ent2.set("")
+                self.second_numbs = []
+            if len(self.third_numbs) > 0:
+                self.numb_ent3.set("")
+                self.third_numbs = []
+            if len(self.gene_numb) > 0:
+                self.gen_numbs.set("")
+                self.gene_numb = []
+        else:
+            if messagebox.askyesno("Claim Prize", "Do you want to Claim your Prize") == True:
+                pass
+            else:
+                if messagebox.askyesno("Exit", "Do you want to leave game") == True:
+                    root.destroy()
+                else:
+                    root.destroy()
+                    import main
+
+
+
 
 
 e = GameScreen(root)
