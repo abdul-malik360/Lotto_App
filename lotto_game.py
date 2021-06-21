@@ -217,14 +217,14 @@ class GameScreen:
         self.ent3 = Label(self.lotto_frame, text="", textvariable=self.numb_ent3, width=15, bg="white")
         self.ent3.grid(column=2, row=3, padx=10, pady=10)
 
-        self.gen_btn = Button(self.lotto_frame, text="PLAY", command=self.generate)
-        self.gen_btn.grid(column=3, row=5)
+        self.gen_btn = Button(self.lotto_frame, text="PLAY", command=self.generate, bg="#FFC107")
+        self.gen_btn.grid(column=2, row=5)
 
-        self.clear_btn1 = Button(self.lotto_frame, text="Clear", command=self.clear1)
+        self.clear_btn1 = Button(self.lotto_frame, text="Clear", command=self.clear1, bg="#FFC107")
         self.clear_btn1.grid(column=3, row=1)
-        self.clear_btn2 = Button(self.lotto_frame, text="Clear", command=self.clear2)
+        self.clear_btn2 = Button(self.lotto_frame, text="Clear", command=self.clear2, bg="#FFC107")
         self.clear_btn2.grid(column=3, row=2)
-        self.clear_btn3 = Button(self.lotto_frame, text="Clear", command=self.clear3)
+        self.clear_btn3 = Button(self.lotto_frame, text="Clear", command=self.clear3, bg="#FFC107")
         self.clear_btn3.grid(column=3, row=3)
         # playsound("audio/game intro.mp3")
 
@@ -328,9 +328,10 @@ class GameScreen:
             prize3 = 0
         elif len(self.same_numb3) == 0:
             prize3 = 0
+        all_prize = prize1 + prize2 + prize3
         messagebox.showinfo("Results of list 3",
                             "You got " + str(len(self.same_numb3)) + " correct numbers. Your cash prize is R" + str(prize3))
-        messagebox.showinfo("Total Winnings", "Your total Cash Prize is R" + str(prize1 + prize2 + prize3))
+        messagebox.showinfo("Total Winnings", "Your total Cash Prize is R" + str(all_prize))
 
         # self.same_ans3.set("You got " + str(len(self.same_numb3)) + " winnings. Your cash prize is R" + str(prize))
         with open("Game_Info.txt", "a+") as written:
@@ -341,6 +342,8 @@ class GameScreen:
             written.write(str(self.third_numbs))
             written.write("\n")
             written.write(str(self.gene_numb))
+            written.write("\n")
+            written.write(str(all_prize))
             written.write("\n")
         self.play_again()
 

@@ -8,7 +8,6 @@ root.title("Rules and Prizes")
 root.config(bg="#FFC107")
 
 
-
 class RulesScreen:
     def __init__(self, master):
         self.lotto_logo = PhotoImage(file="images/loto logo 1.png")
@@ -54,7 +53,6 @@ class RulesScreen:
 
     def exit(self):
         root.destroy()
-
 
     def rules(self):
         self.engine.setProperty("rate", 150)
