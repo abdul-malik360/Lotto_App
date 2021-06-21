@@ -206,27 +206,27 @@ class GameScreen:
         self.ent1_label = Label(self.lotto_frame, text="Your Lucky List 1", width=13, bg="#EED313")
         self.ent1_label.grid(column=1, row=1)
         self.ent2_label = Label(self.lotto_frame, text="Your Lucky List 2", width=13, bg="#EED313")
-        self.ent2_label.grid(column=2, row=1)
+        self.ent2_label.grid(column=1, row=2)
         self.ent3_label = Label(self.lotto_frame, text="Your Lucky List 3", width=13, bg="#EED313")
-        self.ent3_label.grid(column=3, row=1)
+        self.ent3_label.grid(column=1, row=3)
 
-        self.ent1 = Label(self.lotto_frame, text="", textvariable=self.numb_ent1, width=13, bg="white")
-        self.ent1.grid(column=1, row=2)
-        self.ent2 = Label(self.lotto_frame, text="", textvariable=self.numb_ent2, width=13, bg="white")
-        self.ent2.grid(column=2, row=2)
-        self.ent3 = Label(self.lotto_frame, text="", textvariable=self.numb_ent3, width=13, bg="white")
-        self.ent3.grid(column=3, row=2)
+        self.ent1 = Label(self.lotto_frame, text="", textvariable=self.numb_ent1, width=15, bg="white")
+        self.ent1.grid(column=2, row=1, padx=10, pady=10)
+        self.ent2 = Label(self.lotto_frame, text="", textvariable=self.numb_ent2, width=15, bg="white")
+        self.ent2.grid(column=2, row=2, padx=10, pady=10)
+        self.ent3 = Label(self.lotto_frame, text="", textvariable=self.numb_ent3, width=15, bg="white")
+        self.ent3.grid(column=2, row=3, padx=10, pady=10)
 
         self.gen_btn = Button(self.lotto_frame, text="PLAY", command=self.generate)
         self.gen_btn.grid(column=3, row=5)
 
         self.clear_btn1 = Button(self.lotto_frame, text="Clear", command=self.clear1)
-        self.clear_btn1.grid(column=1, row=3)
+        self.clear_btn1.grid(column=3, row=1)
         self.clear_btn2 = Button(self.lotto_frame, text="Clear", command=self.clear2)
-        self.clear_btn2.grid(column=2, row=3)
+        self.clear_btn2.grid(column=3, row=2)
         self.clear_btn3 = Button(self.lotto_frame, text="Clear", command=self.clear3)
         self.clear_btn3.grid(column=3, row=3)
-        playsound("audio/game intro.mp3")
+        # playsound("audio/game intro.mp3")
 
     def choose_number(self, number):
         playsound("audio/click.mp3")
@@ -261,6 +261,7 @@ class GameScreen:
         self.third_numbs.sort()
         messagebox.showinfo("winning combo is", self.gene_numb)
         # self.gen_numbs.set("winning combo is " + str(self.gene_numb))
+        self.gen_btn.config(state=DISABLED)
         self.same_number1()
 
     def same_number1(self):
@@ -364,6 +365,7 @@ class GameScreen:
     def play_again(self):
         if messagebox.askyesno("Retry", "Do you want to play again") == True:
             playsound("audio/change your luck.mp3")
+            self.gen_btn.config(state=NORMAL)
             if len(self.first_numbs) > 0:
                 self.numb_ent1.set("")
                 self.first_numbs = []
@@ -379,7 +381,7 @@ class GameScreen:
         else:
             if messagebox.askyesno("Claim Prize", "Do you want to Claim your Prize") == True:
                 root.destroy()
-                import banking_details
+                import claim_prize
             else:
                 if messagebox.askyesno("Exit", "Do you want to leave game") == True:
                     root.destroy()

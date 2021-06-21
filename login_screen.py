@@ -57,15 +57,15 @@ class LoginAccess:
         self.id_ent = Entry(self.login_frame, textvariable=self.user_id)
         self.id_ent.grid(column=2, row=7)
 
-        self.log_btn = Button(master, text="Login", command=self.name, bg="#EED313", borderwidth="2", cursor="hand2", foreground="black")
-        self.log_btn.place(x=365, y=450)
+        self.log_btn = Button(self.login_frame, text="Login", command=self.name, bg="#EED313", borderwidth="2", cursor="hand2", foreground="black")
+        self.log_btn.grid(column=2, row=9)
 
         self.back_icon = PhotoImage(file="images/back btn.PNG")
         self.back_btn = Button(master, image=self.back_icon, command=self.back, bg="#EED313", cursor="hand2", borderwidth=1, highlightthickness=0, highlightbackground="#FFC107", bd=0)
         self.back_btn.place(x=425, y=255)
 
-        self.clear_btn = Button(master, text="Clear",command=self.clear, bg="#EED313", borderwidth="2", cursor="hand2", foreground="black")
-        self.clear_btn.place(x=310, y=450)
+        # self.clear_btn = Button(self.login_frame, text="Clear",command=self.clear, bg="#EED313", borderwidth="2", cursor="hand2", foreground="black")
+        # self.clear_btn.grid(column=2, row=8)
 
         self.ithuba_logo = PhotoImage(file="images/ithuba.PNG")
         self.canvas = Canvas(master, width=178, height=55, highlightthickness="0")
@@ -81,11 +81,11 @@ class LoginAccess:
 
                 if self.player_name.get()[x]:
                     found = True
-
             if found == True:
                 pass
 
             else:
+                playsound("audio/access denied.mp3")
                 messagebox.showerror("Login Failed", "Please enter a user name")
             self.email()
             with open("Game_Info.txt", "w") as written:
@@ -107,6 +107,7 @@ class LoginAccess:
             # found == True
             pass
         else:
+            playsound("audio/access denied.mp3")
             messagebox.showerror("Entry Invalid", "Please enter a valid Email Address")
         self.dob()
 
@@ -121,15 +122,17 @@ class LoginAccess:
                 pass
 
             elif age < 18:
+                playsound("audio/access denied.mp3")
                 young = 18 - age
-                messagebox.showerror("You are too young to play", "Please try again in " + str(young) + " years")
+                return messagebox.showerror("You are too young to play", "Please try again in " + str(young) + " years")
 
         except ValueError:
-            messagebox.showerror("Entry Invalid", "Invalid ID Number. Try Again")
+            return messagebox.showerror("Entry Invalid", "Invalid ID Number. Try Again")
         if len(self.user_id.get()) < 13:
-            messagebox.showerror("Entry Invalid", "ID Number characters missing")
+            return messagebox.showerror("Entry Invalid", "ID Number characters missing")
+
         elif len(self.user_id.get()) > 13:
-            messagebox.showerror("Entry Invalid", "ID Number characters exceeding limit")
+            return messagebox.showerror("Entry Invalid", "ID Number characters exceeding limit")
         self.all_func()
 
     def all_func(self):
