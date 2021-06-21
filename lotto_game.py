@@ -201,7 +201,7 @@ class GameScreen:
         self.btn_49.place(x=530, y=350)
 
         self.lotto_frame = LabelFrame(root, padx=30, pady=30, width=500, height=190, bg="#EED313")
-        self.lotto_frame.place(x=100, y=420)
+        self.lotto_frame.place(x=180, y=420)
 
         self.ent1_label = Label(self.lotto_frame, text="Your Lucky List 1", width=13, bg="#EED313")
         self.ent1_label.grid(column=1, row=1)
@@ -217,15 +217,8 @@ class GameScreen:
         self.ent3 = Label(self.lotto_frame, text="", textvariable=self.numb_ent3, width=13, bg="white")
         self.ent3.grid(column=3, row=2)
 
-        self.generated_lab = Label(self.lotto_frame, textvariable=self.gen_numbs, width=35, bg="white")
-        self.generated_lab.grid(column=2, row=5)
-
         self.gen_btn = Button(self.lotto_frame, text="PLAY", command=self.generate)
         self.gen_btn.grid(column=3, row=5)
-
-        self.same_lab1 = Label(self.lotto_frame, textvariable=self.same_ans1, bg="white", width=35).grid(column=2, row=6)
-        self.same_lab2 = Label(self.lotto_frame, textvariable=self.same_ans2, bg="white", width=35).grid(column=2, row=7)
-        self.same_lab3 = Label(self.lotto_frame, textvariable=self.same_ans3, bg="white", width=35).grid(column=2, row=8)
 
         self.clear_btn1 = Button(self.lotto_frame, text="Clear", command=self.clear1)
         self.clear_btn1.grid(column=1, row=3)
@@ -233,8 +226,8 @@ class GameScreen:
         self.clear_btn2.grid(column=2, row=3)
         self.clear_btn3 = Button(self.lotto_frame, text="Clear", command=self.clear3)
         self.clear_btn3.grid(column=3, row=3)
-        self.clear_btn = Button(self.lotto_frame, text="Clear All", command=self.clear)
-        self.clear_btn.grid(column=3, row=8)
+        # self.clear_btn = Button(self.lotto_frame, text="Clear All", command=self.clear)
+        # self.clear_btn.grid(column=3, row=8)
         # playsound("audio/game intro.mp3")
 
     def choose_number(self, number):
@@ -268,71 +261,78 @@ class GameScreen:
         self.first_numbs.sort()
         self.second_numbs.sort()
         self.third_numbs.sort()
-        self.gen_numbs.set("winning combo is " + str(self.gene_numb))
+        messagebox.showinfo("winning combo is", self.gene_numb)
+        # self.gen_numbs.set("winning combo is " + str(self.gene_numb))
         self.same_number1()
 
     def same_number1(self):
-        global prize
+        global prize1
         self.same_numb1 = set(self.gene_numb).intersection(set(self.first_numbs))
         # self.same_ans1.set(len(self.same_numb1))
         if len(self.same_numb1) == 6:
-            prize = 10000000
+            prize1 = 10000000
 
         elif len(self.same_numb1) == 5:
-            prize = 8584
+            prize1 = 8584
         elif len(self.same_numb1) == 4:
-            prize = 2384
+            prize1 = 2384
         elif len(self.same_numb1) == 3:
-            prize = 100.50
+            prize1 = 100.50
         elif len(self.same_numb1) == 2:
-            prize = 20
+            prize1 = 20
         elif len(self.same_numb1) == 1:
-            prize = 0
+            prize1 = 0
         elif len(self.same_numb1) == 0:
-            prize = 0
-        self.same_ans1.set("You got " + str(len(self.same_numb1)) + " winnings. Your cash prize is R" + str(prize))
+            prize1 = 0
+        messagebox.showinfo("Results of list 1", "You got " + str(len(self.same_numb1)) + " correct numbers. Your cash prize is R" + str(prize1))
+        #self.same_ans1.set("You got " + str(len(self.same_numb1)) + " winnings. Your cash prize is R" + str(prize))
         self.same_number2()
 
     def same_number2(self):
-        global prize
+        global prize2
         self.same_numb2 = set(self.gene_numb).intersection(set(self.second_numbs))
         # self.same_ans2.set(len(self.same_numb2))
         if len(self.same_numb2) == 6:
-            prize = 10000000
+            prize2 = 10000000
         elif len(self.same_numb2) == 5:
-            prize = 8584
+            prize2 = 8584
         elif len(self.same_numb2) == 4:
-            prize = 2384
+            prize2 = 2384
         elif len(self.same_numb2) == 3:
-            prize = 100.50
+            prize2 = 100.50
         elif len(self.same_numb2) == 2:
-            prize = 20
+            prize2 = 20
         elif len(self.same_numb2) == 1:
-            prize = 0
+            prize2 = 0
         elif len(self.same_numb2) == 0:
-            prize = 0
-        self.same_ans2.set("You got " + str(len(self.same_numb2)) + " winnings. Your cash prize is R" + str(prize))
+            prize2 = 0
+        messagebox.showinfo("Results of list 2",
+                            "You got " + str(len(self.same_numb2)) + " correct numbers. Your cash prize is R" + str(prize2))
+        # self.same_ans2.set("You got " + str(len(self.same_numb2)) + " winnings. Your cash prize is R" + str(prize))
         self.same_number3()
 
     def same_number3(self):
-        global prize
+        global prize3
         self.same_numb3 = set(self.gene_numb).intersection(set(self.third_numbs))
         # self.same_ans3.set(len(self.same_numb3))
         if len(self.same_numb3) == 6:
-            prize = 10000000
+            prize3 = 10000000
         elif len(self.same_numb3) == 5:
-            prize = 8584
+            prize3 = 8584
         elif len(self.same_numb3) == 4:
-            prize = 2384
+            prize3 = 2384
         elif len(self.same_numb3) == 3:
-            prize = 100.50
+            prize3 = 100.50
         elif len(self.same_numb3) == 2:
-            prize = 20
+            prize3 = 20
         elif len(self.same_numb3) == 1:
-            prize = 0
+            prize3 = 0
         elif len(self.same_numb3) == 0:
-            prize = 0
-        self.same_ans3.set("You got " + str(len(self.same_numb3)) + " winnings. Your cash prize is R" + str(prize))
+            prize3 = 0
+        messagebox.showinfo("Results of list 3",
+                            "You got " + str(len(self.same_numb3)) + " correct numbers. Your cash prize is R" + str(prize3))
+        messagebox.showinfo("Total Winnings", "Your total Cash Prize is R" + str(prize1 + prize2 + prize3))
+        # self.same_ans3.set("You got " + str(len(self.same_numb3)) + " winnings. Your cash prize is R" + str(prize))
         with open("Game_Info.txt", "a+") as written:
             written.write(str(self.first_numbs))
             written.write("\n")
