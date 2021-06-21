@@ -31,7 +31,7 @@ class CurrencyConverter:
             game = player
 
         self.currency_frame = LabelFrame(master, padx=50, pady=30, width=378, height=290, bg="#EED313")
-        self.currency_frame.place(x=230, y=150)
+        self.currency_frame.place(x=10, y=200)
 
         self.prize_lab = Label(self.currency_frame, text="Your Prize is R ")
         self.prize_lab.grid(column=1, row=1)
@@ -46,32 +46,31 @@ class CurrencyConverter:
         self.currency_box.grid(column=1, row=2)
 
         self.converted_label = Label(self.currency_frame, text="Converted Amount is: ")
-        self.converted_label.grid(column=1, row=3)
+        self.converted_label.grid(column=1, row=3, padx=10, pady=10)
 
         self.converted = Label(self.currency_frame, text='', textvariable=converted)
-        self.converted.grid(column=2, row=3)
+        self.converted.grid(column=2, row=3, padx=10, pady=10)
 
         self.convert_btn = Button(self.currency_frame, text='Convert', command=self.swap_currencies)
         self.convert_btn.grid(column=2, row=4)
 
         self.bank_frame = LabelFrame(master, padx=50, pady=30, width=378, height=290, bg="#EED313")
-        self.bank_frame.place(x=230, y=350)
+        self.bank_frame.place(x=400, y=200)
 
         self.bank_name = StringVar(self.bank_frame)
         self.bank_name.set("Choose Your Bank")
         self.bank_options = OptionMenu(self.bank_frame,self.bank_name, *self.banks)
         self.bank_options.config(width=15)
-        self.bank_options.grid(column=1, row=1)
+        self.bank_options.grid(column=2, row=1, padx=10, pady=10)
 
         self.account_name = Entry(self.bank_frame)
-        self.account_name.grid(column=1, row=2)
+        self.account_name.grid(column=2, row=2, padx=10, pady=10)
         self.account_number = Entry(self.bank_frame)
-        self.account_number.grid(column=1, row=3)
+        self.account_number.grid(column=2, row=3, padx=10, pady=10)
         self.email_ent = Label(self.bank_frame, width=20)
-        self.email_ent.grid(column=1, row=4)
+        self.email_ent.grid(column=2, row=4, padx=10, pady=10)
         self.send_btn = Button(self.bank_frame, text="send")
-        self.send_btn.grid(column=1, row=5)
-
+        self.send_btn.grid(column=2, row=5, padx=10, pady=10)
 
     def convert(self, zar, convert_currency, prize):
         prize = round(prize * currencies[convert_currency], 2)
