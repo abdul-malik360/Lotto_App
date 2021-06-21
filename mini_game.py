@@ -2,7 +2,7 @@ from tkinter import *
 import random
 
 root = Tk()
-root.geometry("600x600")
+root.geometry("700x700")
 root.title("Welcome To Ithuba Lotto")
 root.config(bg="#FFC107")
 

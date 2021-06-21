@@ -380,7 +380,8 @@ class GameScreen:
                 self.gene_numb = []
         else:
             if messagebox.askyesno("Claim Prize", "Do you want to Claim your Prize") == True:
-                pass
+                root.destroy()
+                import banking_details
             else:
                 if messagebox.askyesno("Exit", "Do you want to leave game") == True:
                     root.destroy()
