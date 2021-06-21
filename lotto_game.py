@@ -226,9 +226,7 @@ class GameScreen:
         self.clear_btn2.grid(column=2, row=3)
         self.clear_btn3 = Button(self.lotto_frame, text="Clear", command=self.clear3)
         self.clear_btn3.grid(column=3, row=3)
-        # self.clear_btn = Button(self.lotto_frame, text="Clear All", command=self.clear)
-        # self.clear_btn.grid(column=3, row=8)
-        # playsound("audio/game intro.mp3")
+        playsound("audio/game intro.mp3")
 
     def choose_number(self, number):
         playsound("audio/click.mp3")
@@ -388,9 +386,6 @@ class GameScreen:
                 else:
                     root.destroy()
                     import main
-
-
-
 
 
 e = GameScreen(root)

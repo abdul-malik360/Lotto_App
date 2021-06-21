@@ -31,7 +31,7 @@ class RulesScreen:
         self.rules_frame.place(x=200, y=250)
 
         self.rules_txt = Label(self.rules_frame,
-                          text="Enter your Name, Email Address and ID Number""\n""Only valid inputs allows you to play" "\n""\n" "Age required to play game is 18 and older" "\n""\n" "You select a set of six numbers and run the game" "\n""\n" "You're allowed to generate 3 sets " "\n""\n" "Your selected set is compared to the game's lucky draw" "\n""\n" "Stand a chance to win R10 000 000" "\n""\n" "If you meet the age requirement, click sign in""\n""If not, click Mini Game",
+                          text="Enter your Name, Email Address and ID Number""\n""Only valid inputs allows you to play" "\n""\n" "Age required to play game is 18 and older" "\n""\n" "You select a set of six numbers and run the game" "\n""\n" "You're allowed to generate 3 sets " "\n""\n" "Your selected set is compared to the game's lucky draw" "\n""\n" "Stand a chance to win R10 000 000" "\n""\n" "If you meet the age requirement, click sign in""\n""If not, click Exit",
                           bg="#EED313")
         self.rules_txt.place(x=0, y=5)
         self.engine = pyttsx3.init()
@@ -39,8 +39,8 @@ class RulesScreen:
         self.sign_in = Button(root, text="Sign in", bg="#EED313", command=self.login_screen, cursor="hand2", borderwidth=2, highlightthickness=1, highlightbackground="#FFC107")
         self.sign_in.place(x=200, y=540)
 
-        self.mini_game = Button(root, text="Mini Game", bg="#EED313", command=self.mini_game_screen, cursor="hand2", borderwidth=2, highlightthickness=1, highlightbackground="#FFC107")
-        self.mini_game.place(x=280, y=540)
+        self.exit_game = Button(root, text="EXIT", bg="#EED313", command=self.exit, cursor="hand2", borderwidth=2, highlightthickness=1, highlightbackground="#FFC107")
+        self.exit_game.place(x=280, y=540)
 
         self.speaker = PhotoImage(file="images/speaker.PNG")
         self.speaker_btn = Button(root, image=self.speaker, command=self.rules, cursor="hand2", borderwidth=2, highlightthickness=1, highlightbackground="#FFC107", bg="#FFC107")
@@ -52,14 +52,14 @@ class RulesScreen:
         root.destroy()
         import login_screen
 
-    def mini_game_screen(self):
+    def exit(self):
         root.destroy()
-        import mini_game
+
 
     def rules(self):
         self.engine.setProperty("rate", 150)
         self.engine.say(
-            "Enter your Name, Email Address and ID Number. Only valid inputs allow you to play. Age required to play game is 18 and older. You select a set of six numbers and run the game. You're allowed to generate 3 sets. Your selected set is compared to the game's lucky draw. Stand a chance to win ten million rand. If you meet the age requirement, click sign in. If not, click Mini Game.")
+            "Enter your Name, Email Address and ID Number. Only valid inputs allow you to play. Age required to play game is 18 and older. You select a set of six numbers and run the game. You're allowed to generate 3 sets. Your selected set is compared to the game's lucky draw. Stand a chance to win ten million rand. If you meet the age requirement, click sign in. If not, click Exit.")
         self.engine.runAndWait()
 
 

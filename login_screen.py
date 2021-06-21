@@ -123,8 +123,7 @@ class LoginAccess:
             elif age < 18:
                 young = 18 - age
                 messagebox.showerror("You are too young to play", "Please try again in " + str(young) + " years")
-                root.destroy()
-                import mini_game
+
         except ValueError:
             messagebox.showerror("Entry Invalid", "Invalid ID Number. Try Again")
         if len(self.user_id.get()) < 13:
@@ -145,7 +144,7 @@ class LoginAccess:
         import main
 
     def clear(self):
-        playsound("audio/sweep.mp3")
+        playsound("audio/sweeep.mp3")
         self.name_ent.delete(0, END)
         self.email_ent.delete(0, END)
         self.id_ent.delete(0, END)
