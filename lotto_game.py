@@ -344,7 +344,7 @@ class GameScreen:
             written.write(str(self.gene_numb))
             written.write("\n")
             written.write(str(all_prize))
-            written.write("\n")
+
         self.play_again()
 
     def clear1(self):

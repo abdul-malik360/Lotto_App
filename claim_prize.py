@@ -28,21 +28,25 @@ class CurrencyConverter:
         self.canvas.create_image(0, 0, anchor=NW, image=self.lotto_logo)
         self.canvas.place(x=70, y=10)
 
-        with open("Game_Info.txt") as files:
-            for line in files:
-                file = line
-            files.close()
-            game = file
+        with open("Game_Info.txt") as file:
+            for line in file:
+                prize = line
+            file.close()
+
+        self.convert_pic = PhotoImage(file="images/Capture.PNG")
+        self.canvas = Canvas(root, width=113, height=83, highlightthickness="0")
+        self.canvas.create_image(0, 0, anchor=NW, image=self.convert_pic)
+        self.canvas.place(x=250, y=250)
 
         self.currency_frame = LabelFrame(master, padx=50, pady=30, width=378, height=290, bg="#EED313")
-        self.currency_frame.place(x=10, y=200)
+        self.currency_frame.place(x=370, y=200)
 
-        self.prize_lab = Label(self.currency_frame, text="Your Prize is R ")
+        self.prize_lab = Label(self.currency_frame, text="Your Prize in rands (R)")
         self.prize_lab.grid(column=1, row=1)
 
         self.amount = Label(self.currency_frame, textvariable=self.amount_won)
         self.amount.grid(column=2, row=1)
-        self.amount_won.set(game)
+        self.amount_won.set(prize)
 
         self.currency_box = ttk.Combobox(self.currency_frame)
         self.currency_box["values"] = currency
@@ -58,8 +62,13 @@ class CurrencyConverter:
         self.convert_btn = Button(self.currency_frame, text='Convert', command=self.swap_currencies)
         self.convert_btn.grid(column=2, row=4)
 
+        self.claim = PhotoImage(file="images/claim prize.png")
+        self.canvas = Canvas(root, width=220, height=210, highlightthickness="0")
+        self.canvas.create_image(0, 0, anchor=NW, image=self.claim)
+        self.canvas.place(x=400, y=420)
+
         self.bank_frame = LabelFrame(master, padx=50, pady=30, width=378, height=290, bg="#EED313")
-        self.bank_frame.place(x=400, y=200)
+        self.bank_frame.place(x=10, y=400)
 
         self.bank_name = StringVar(self.bank_frame)
         self.bank_name.set("Choose Your Bank")
