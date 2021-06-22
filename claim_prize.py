@@ -5,7 +5,7 @@ import requests
 root = Tk()
 root.geometry("700x700")
 root.title("Claim Your Prize")
-root.config(bg="#FFC107")
+root.config(bg="#FDDA0F")
 
 converted = StringVar()
 
@@ -23,12 +23,16 @@ class CurrencyConverter:
     amount_won = StringVar()
     banks = ["ABSA", "Nedbank", "Standardbank", "FNB"]
     def __init__(self, master):
+        self.lotto_logo = PhotoImage(file="images/nl flag.PNG")
+        self.canvas = Canvas(root, width=570, height=180, highlightthickness="0")
+        self.canvas.create_image(0, 0, anchor=NW, image=self.lotto_logo)
+        self.canvas.place(x=70, y=10)
+
         with open("Game_Info.txt") as files:
             for line in files:
                 file = line
-            player = file
             files.close()
-            game = player
+            game = file
 
         self.currency_frame = LabelFrame(master, padx=50, pady=30, width=378, height=290, bg="#EED313")
         self.currency_frame.place(x=10, y=200)

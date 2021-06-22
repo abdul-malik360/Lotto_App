@@ -242,7 +242,7 @@ class GameScreen:
         elif len(self.third_numbs) == 6:
             messagebox.showinfo("Entries full", "Play Game")
         else:
-            messagebox.showerror("Entry Invalid", "You can only choose one number per Entry")
+            messagebox.showerror("Entry Invalid", "You can only choose number once per Entry")
 
     def generate(self):
         x = 0
