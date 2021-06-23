@@ -89,13 +89,13 @@ class LoginAccess:
                 messagebox.showerror("Login Failed", "Please enter a user name")
             self.email()
             with open("Game_Info.txt", "w") as written:
-                written.write(self.player_name.get())
+                written.write("Player Name: " + self.player_name.get())
                 written.write("\n")
-                written.write(self.player_email.get())
+                written.write("Player Email Address: " + self.player_email.get())
                 written.write("\n")
-                written.write(self.user_id.get())
+                written.write("Player ID Number: " + self.user_id.get())
                 written.write("\n")
-                written.write(self.id_res.get())
+                written.write("Player Age: " + self.id_res.get())
                 written.write("\n")
         except ValueError:
             messagebox.showerror("Entry Invalid", "Please enter a valid Name")

@@ -245,6 +245,8 @@ class GameScreen:
             messagebox.showerror("Entry Invalid", "You can only choose number once per Entry")
 
     def generate(self):
+
+
         x = 0
         playsound("audio/here they come.mp3")
         while x < 6:
@@ -263,6 +265,7 @@ class GameScreen:
         # self.gen_numbs.set("winning combo is " + str(self.gene_numb))
         self.gen_btn.config(state=DISABLED)
         self.same_number1()
+
 
     def same_number1(self):
         global prize1
@@ -335,15 +338,16 @@ class GameScreen:
 
         # self.same_ans3.set("You got " + str(len(self.same_numb3)) + " winnings. Your cash prize is R" + str(prize))
         with open("Game_Info.txt", "a+") as written:
-            written.write(str(self.first_numbs))
+            written.write("Your Lucky List 1: " + str(self.first_numbs))
             written.write("\n")
-            written.write(str(self.second_numbs))
+            written.write("Your Lucky List 2: " + str(self.second_numbs))
             written.write("\n")
-            written.write(str(self.third_numbs))
+            written.write("Your Lucky List 3: " + str(self.third_numbs))
             written.write("\n")
-            written.write(str(self.gene_numb))
+            written.write("The Lotto Numbers: " + str(self.gene_numb))
             written.write("\n")
-            written.write(str(all_prize))
+            written.write("Your Prize: R " + str(all_prize))
+            written.write("\n")
 
         self.play_again()
 
