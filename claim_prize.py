@@ -116,7 +116,7 @@ class CurrencyConverter:
         with open("Game_Info.txt", "a+") as written:
             written.write("Chosen Currency: " + self.currency_box.get())
             written.write("\n")
-            written.write("Amount in new Currency: " + str(converted.set(converted_prize)))
+            written.write("Amount in new Currency: " + str(converted_prize))
             written.write("\n")
 
 
