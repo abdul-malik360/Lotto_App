@@ -226,7 +226,7 @@ class GameScreen:
         self.clear_btn2.grid(column=3, row=2)
         self.clear_btn3 = Button(self.lotto_frame, text="Clear", command=self.clear3, bg="#FFC107")
         self.clear_btn3.grid(column=3, row=3)
-        # playsound("audio/game intro.mp3")
+        playsound("audio/game intro.mp3")
 
     def choose_number(self, number):
         playsound("audio/click.mp3")
