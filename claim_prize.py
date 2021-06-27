@@ -4,6 +4,8 @@ import requests
 from tkinter import messagebox
 import os
 import smtplib
+from email.message import EmailMessage
+from playsound import playsound
 
 
 root = Tk()
@@ -110,7 +112,7 @@ class CurrencyConverter:
         self.email_ent.grid(column=2, row=4, padx=10, pady=10)
         self.player_email.set(email_add)
 
-        self.send_btn = Button(self.bank_frame, text="Claim Prize", bg="#FDDA0F")
+        self.send_btn = Button(self.bank_frame, text="Claim Prize", bg="#FDDA0F", command=self.send_details)
         self.send_btn.grid(column=2, row=5, padx=10, pady=10)
 
     def convert(self, zar, convert_currency, prize):
@@ -121,6 +123,7 @@ class CurrencyConverter:
             messagebox.showerror("No Entry", "Please choose a currency")
 
     def swap_currencies(self):
+        playsound("audio/ching.mp3")
         prize = float(self.amount_won.get())
         from_zar = currencies
         to_converted = self.currency_box.get()
@@ -134,21 +137,33 @@ class CurrencyConverter:
             written.write("\n")
             written.write("Your Bank: " + self.bank_box.get())
             written.write("\n")
-            written.write("Account Holder: " + self.account_holder.get())
+            written.write("Account Holder: " + str(self.account_holder.get()))
             written.write("\n")
-            written.write("Account Number: " + self.account_number.get())
+            written.write("Account Number: " + str(self.account_number_ent.get()))
             written.write("\n")
 
     def send_details(self):
+        playsound("audio/money.mp3")
         email_address = os.environ.get("email_add")
         email_password = os.environ.get("email_pass")
-        with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
-            smtp.starttls()
-            smtp.login(email_address, email_password)  
 
+        msg = EmailMessage()
+        msg["Subject"] = "Results of Your Lotto Draw"
+        msg["From"] = email_address
+        msg["To"] = self.player_email.get()
+        msg.set_content("Your Results attached...")
 
+        files = ["Game_Info.txt"]
+        for file in files:
+            with open(file, "rb") as gif:
+                file_data = gif.read()
+                file_name = gif.name
+            msg.add_attachment(file_data, maintype="application", subtype="octet-stream", filename=file_name)
 
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+            smtp.login(email_address, email_password)
 
+            smtp.send_message(msg)
 
 
 f = CurrencyConverter(root)
