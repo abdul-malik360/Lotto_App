@@ -21,6 +21,9 @@ for i in currencies.keys():
 
 class CurrencyConverter:
     amount_won = StringVar()
+    account_holder = StringVar()
+    account_number = StringVar()
+    player_email = StringVar()
     banks = ["ABSA", "Nedbank", "Standardbank", "FNB"]
     def __init__(self, master):
         self.lotto_logo = PhotoImage(file="images/nl flag.PNG")
@@ -32,8 +35,19 @@ class CurrencyConverter:
             for line in file:
                 winnings = line.split()
                 prizes = winnings
-            file.close()
             prize = prizes[3]
+
+        f = open("Game_Info.txt")
+        for x, lines in enumerate(f):
+            if x == 1:
+                email_line = lines.split()
+                email = email_line[3]
+
+        # with open("Game_Info.txt") as file_in:
+        #     lines = []
+        #     for line in file_in:
+        #         lines.append(line)
+        #         email = lines
 
         self.convert_pic = PhotoImage(file="images/Capture.PNG")
         self.canvas = Canvas(root, width=113, height=83, highlightthickness="0")
@@ -90,12 +104,14 @@ class CurrencyConverter:
         self.account_numb_lab = Label(self.bank_frame, text="Your Email Address: ", bg="#EED313")
         self.account_numb_lab.grid(column=1, row=4)
 
-        self.account_name = Entry(self.bank_frame)
-        self.account_name.grid(column=2, row=2, padx=10, pady=10)
-        self.account_number = Entry(self.bank_frame)
-        self.account_number.grid(column=2, row=3, padx=10, pady=10)
-        self.email_ent = Label(self.bank_frame, width=20, bg="#EED313")
+        self.account_ent = Entry(self.bank_frame, textvariable=self.account_holder)
+        self.account_ent.grid(column=2, row=2, padx=10, pady=10)
+        self.account_number_ent = Entry(self.bank_frame, textvariable=self.account_number)
+        self.account_number_ent.grid(column=2, row=3, padx=10, pady=10)
+        self.email_ent = Label(self.bank_frame, width=30, bg="#EED313", textvariable=self.player_email)
         self.email_ent.grid(column=2, row=4, padx=10, pady=10)
+        self.player_email.set(email)
+
         self.send_btn = Button(self.bank_frame, text="send", bg="#FDDA0F")
         self.send_btn.grid(column=2, row=5, padx=10, pady=10)
 
@@ -117,6 +133,12 @@ class CurrencyConverter:
             written.write("Chosen Currency: " + self.currency_box.get())
             written.write("\n")
             written.write("Amount in new Currency: " + str(converted_prize))
+            written.write("\n")
+            written.write("Your Bank: " + self.bank_box.get())
+            written.write("\n")
+            written.write("Account Holder: " + self.account_holder.get())
+            written.write("\n")
+            written.write("Account Number: " + self.account_number.get())
             written.write("\n")
 
 

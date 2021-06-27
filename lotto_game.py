@@ -226,7 +226,7 @@ class GameScreen:
         self.clear_btn2.grid(column=3, row=2)
         self.clear_btn3 = Button(self.lotto_frame, text="Clear", command=self.clear3, bg="#FFC107")
         self.clear_btn3.grid(column=3, row=3)
-        playsound("audio/game intro.mp3")
+        #playsound("audio/game intro.mp3")
 
     def choose_number(self, number):
         playsound("audio/click.mp3")
@@ -246,16 +246,15 @@ class GameScreen:
 
     def generate(self):
 
-
         x = 0
-        playsound("audio/here they come.mp3")
+        #playsound("audio/here they come.mp3")
         while x < 6:
             number = random.randint(1, 49)
             if number not in self.gene_numb:
                 self.gene_numb.append(number)
                 x = x + 1
-
         else:
+
             x = x - 1
         self.gene_numb.sort()
         self.first_numbs.sort()
@@ -399,3 +398,7 @@ class GameScreen:
 
 e = GameScreen(root)
 root.mainloop()
+
+
+#                     if len(self.numb_ent1.get()) and len(self.numb_ent2.get()) and len(self.numb_ent3.get()) != 6:
+#             return messagebox.showerror("Missing Entries", "Please choose 6 numbers")

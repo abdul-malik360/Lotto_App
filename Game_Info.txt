@@ -1,0 +1,9 @@
+Player Name: abdul 
+Player Email Address: abdulmalikmohamed360@gmail.com
+Player ID Number: 0002035200084
+Player Age: 21
+Your Lucky List 1: [1, 2, 11, 12, 21, 31]
+Your Lucky List 2: [3, 13, 22, 23, 32, 33]
+Your Lucky List 3: [4, 5, 14, 15, 24, 34]
+The Lotto Numbers: [2, 15, 16, 23, 34, 45]
+Your Prize: R 20

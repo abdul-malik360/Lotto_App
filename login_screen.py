@@ -85,18 +85,9 @@ class LoginAccess:
                 pass
 
             else:
-                playsound("audio/access denied.mp3")
                 messagebox.showerror("Login Failed", "Please enter a user name")
             self.email()
-            with open("Game_Info.txt", "w") as written:
-                written.write("Player Name: " + self.player_name.get())
-                written.write("\n")
-                written.write("Player Email Address: " + self.player_email.get())
-                written.write("\n")
-                written.write("Player ID Number: " + self.user_id.get())
-                written.write("\n")
-                written.write("Player Age: " + self.id_res.get())
-                written.write("\n")
+
         except ValueError:
             messagebox.showerror("Entry Invalid", "Please enter a valid Name")
 
@@ -107,7 +98,6 @@ class LoginAccess:
             # found == True
             pass
         else:
-            playsound("audio/access denied.mp3")
             messagebox.showerror("Entry Invalid", "Please enter a valid Email Address")
         self.dob()
 
@@ -138,6 +128,15 @@ class LoginAccess:
     def all_func(self):
         playsound("audio/access granted.mp3")
         messagebox.showinfo("Access Granted", "Let's Play")
+        with open("Game_Info.txt", "w") as written:
+            written.write("Player Name: " + self.player_name.get())
+            written.write("\n")
+            written.write("Player Email Address: " + self.player_email.get())
+            written.write("\n")
+            written.write("Player ID Number: " + self.user_id.get())
+            written.write("\n")
+            written.write("Player Age: " + self.id_res.get())
+            written.write("\n")
         root.destroy()
         import lotto_game
 
