@@ -2,6 +2,10 @@ from tkinter import *
 from tkinter import ttk
 import requests
 from tkinter import messagebox
+import os
+import smtplib
+
+
 root = Tk()
 root.geometry("700x700")
 root.title("Claim Your Prize")
@@ -91,9 +95,9 @@ class CurrencyConverter:
         self.bank_box.set("Choose Your Bank")
         self.bank_box.grid(column=2, row=1, padx=10, pady=10)
 
-        self.account_lab = Label(self.bank_frame, text="Account holder: ", bg="#EED313")
+        self.account_lab = Label(self.bank_frame, text="Account Holder: ", bg="#EED313")
         self.account_lab.grid(column=1, row=2)
-        self.account_numb_lab = Label(self.bank_frame, text="Account number: ", bg="#EED313")
+        self.account_numb_lab = Label(self.bank_frame, text="Account Number: ", bg="#EED313")
         self.account_numb_lab.grid(column=1, row=3)
         self.account_numb_lab = Label(self.bank_frame, text="Your Email Address: ", bg="#EED313")
         self.account_numb_lab.grid(column=1, row=4)
@@ -106,7 +110,7 @@ class CurrencyConverter:
         self.email_ent.grid(column=2, row=4, padx=10, pady=10)
         self.player_email.set(email_add)
 
-        self.send_btn = Button(self.bank_frame, text="send", bg="#FDDA0F")
+        self.send_btn = Button(self.bank_frame, text="Claim Prize", bg="#FDDA0F")
         self.send_btn.grid(column=2, row=5, padx=10, pady=10)
 
     def convert(self, zar, convert_currency, prize):
@@ -136,7 +140,13 @@ class CurrencyConverter:
             written.write("\n")
 
     def send_details(self):
-        
+        email_address = os.environ.get("email_add")
+        email_password = os.environ.get("email_pass")
+        with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
+            smtp.starttls()
+            smtp.login(email_address, email_password)  
+
+
 
 
 

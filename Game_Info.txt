@@ -7,8 +7,3 @@ Your Lucky List 2: [3, 13, 14, 23, 24, 33]
 Your Lucky List 3: [26, 34, 35, 36, 44, 45]
 The Lotto Numbers: [5, 13, 17, 31, 46, 48]
 Your Prize: R 0
-Chosen Currency: AFN
-Amount in new Currency: 0.0
-Your Bank: Choose Your Bank
-Account Holder: 
-Account Number: 
