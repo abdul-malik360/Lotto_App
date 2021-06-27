@@ -41,13 +41,7 @@ class CurrencyConverter:
         for x, lines in enumerate(f):
             if x == 1:
                 email_line = lines.split()
-                email = email_line[3]
-
-        # with open("Game_Info.txt") as file_in:
-        #     lines = []
-        #     for line in file_in:
-        #         lines.append(line)
-        #         email = lines
+                email_add = email_line[3]
 
         self.convert_pic = PhotoImage(file="images/Capture.PNG")
         self.canvas = Canvas(root, width=113, height=83, highlightthickness="0")
@@ -110,7 +104,7 @@ class CurrencyConverter:
         self.account_number_ent.grid(column=2, row=3, padx=10, pady=10)
         self.email_ent = Label(self.bank_frame, width=30, bg="#EED313", textvariable=self.player_email)
         self.email_ent.grid(column=2, row=4, padx=10, pady=10)
-        self.player_email.set(email)
+        self.player_email.set(email_add)
 
         self.send_btn = Button(self.bank_frame, text="send", bg="#FDDA0F")
         self.send_btn.grid(column=2, row=5, padx=10, pady=10)
@@ -140,6 +134,11 @@ class CurrencyConverter:
             written.write("\n")
             written.write("Account Number: " + self.account_number.get())
             written.write("\n")
+
+    def send_details(self):
+        
+
+
 
 
 f = CurrencyConverter(root)
