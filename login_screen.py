@@ -102,6 +102,12 @@ class LoginAccess:
         self.dob()
 
     def dob(self):
+        if len(self.user_id.get()) < 13:
+            return messagebox.showerror("Entry Invalid", "ID Number characters missing")
+
+        elif len(self.user_id.get()) > 13:
+            return messagebox.showerror("Entry Invalid", "ID Number characters exceeding limit")
+        self.all_func()
         try:
             id_number = rsaidnumber.parse(self.id_ent.get())
             age = (datetime.today() - id_number.date_of_birth) // timedelta(days=365.245)
@@ -118,12 +124,7 @@ class LoginAccess:
 
         except ValueError:
             return messagebox.showerror("Entry Invalid", "Invalid ID Number. Try Again")
-        if len(self.user_id.get()) < 13:
-            return messagebox.showerror("Entry Invalid", "ID Number characters missing")
 
-        elif len(self.user_id.get()) > 13:
-            return messagebox.showerror("Entry Invalid", "ID Number characters exceeding limit")
-        self.all_func()
 
     def all_func(self):
         playsound("audio/access granted.mp3")

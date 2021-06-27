@@ -135,35 +135,41 @@ class CurrencyConverter:
             written.write("\n")
             written.write("Amount in new Currency: " + str(converted_prize))
             written.write("\n")
-            written.write("Your Bank: " + self.bank_box.get())
-            written.write("\n")
-            written.write("Account Holder: " + str(self.account_holder.get()))
-            written.write("\n")
-            written.write("Account Number: " + str(self.account_number_ent.get()))
-            written.write("\n")
 
     def send_details(self):
-        playsound("audio/money.mp3")
-        email_address = os.environ.get("email_add")
-        email_password = os.environ.get("email_pass")
+        try:
+            with open("Game_Info.txt", "a+") as written:
+                written.write("Your Bank: " + self.bank_box.get())
+                written.write("\n")
+                written.write("Account Holder: " + self.account_holder.get())
+                written.write("\n")
+                written.write("Account Number: " + self.account_number_ent.get())
+                written.write("\n")
+            playsound("audio/money.mp3")
+            email_address = os.environ.get("email_add")
+            email_password = os.environ.get("email_pass")
 
-        msg = EmailMessage()
-        msg["Subject"] = "Results of Your Lotto Draw"
-        msg["From"] = email_address
-        msg["To"] = self.player_email.get()
-        msg.set_content("Your Results attached...")
+            msg = EmailMessage()
+            msg["Subject"] = "Results of Your Lotto Draw"
+            msg["From"] = email_address
+            msg["To"] = self.player_email.get()
+            msg.set_content("Your Results attached...")
 
-        files = ["Game_Info.txt"]
-        for file in files:
-            with open(file, "rb") as gif:
-                file_data = gif.read()
-                file_name = gif.name
-            msg.add_attachment(file_data, maintype="application", subtype="octet-stream", filename=file_name)
+            files = ["Game_Info.txt"]
+            for file in files:
+                with open(file, "rb") as gif:
+                    file_data = gif.read()
+                    file_name = gif.name
+                msg.add_attachment(file_data, maintype="application", subtype="octet-stream", filename=file_name)
 
-        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-            smtp.login(email_address, email_password)
+            with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+                smtp.login(email_address, email_password)
 
-            smtp.send_message(msg)
+                smtp.send_message(msg)
+        except ValueError:
+            if self.account_number_ent.get() != int:
+                return messagebox.showerror("Entry Invalid", "Please Enter Numbers Only")
+
 
 
 f = CurrencyConverter(root)
