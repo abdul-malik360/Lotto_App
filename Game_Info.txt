@@ -7,3 +7,8 @@ Your Lucky List 2: [28, 36, 37, 38, 46, 48]
 Your Lucky List 3: [8, 18, 19, 29, 39, 49]
 The Lotto Numbers: [5, 12, 24, 28, 37, 42]
 Your Prize: R 40
+Chosen Currency: AED
+Amount in new Currency: 10.39
+Your Bank: Nedbank
+Account Holder: uthmaan b
+Account Number: 0212484121

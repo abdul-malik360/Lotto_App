@@ -55,7 +55,7 @@ class CurrencyConverter:
         self.canvas.place(x=30, y=250)
 
         self.currency_frame = LabelFrame(master, padx=50, pady=30, width=378, height=290, bg="#EED313")
-        self.currency_frame.place(x=180, y=200)
+        self.currency_frame.place(x=170, y=190)
 
         self.prize_lab = Label(self.currency_frame, text="Your Prize in rands (R)", bg="#EED313")
         self.prize_lab.grid(column=1, row=1)
@@ -67,7 +67,7 @@ class CurrencyConverter:
         self.currency_box = ttk.Combobox(self.currency_frame)
         self.currency_box["values"] = currency
         self.currency_box.set("Choose Currency")
-        self.currency_box.grid(column=1, row=2)
+        self.currency_box.grid(column=1, row=2, padx=10, pady=10)
 
         self.converted_label = Label(self.currency_frame, text="Converted Amount is: ", bg="#EED313")
         self.converted_label.grid(column=1, row=3, padx=10, pady=10)
@@ -158,6 +158,8 @@ class CurrencyConverter:
                 smtp.login(email_address, email_password)
 
                 smtp.send_message(msg)
+            root.destroy()
+            import main
         except ValueError:
             if self.account_number_ent.get() != int:
                 return messagebox.showerror("Entry Invalid", "Please Enter Numbers Only")
