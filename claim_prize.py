@@ -52,10 +52,10 @@ class CurrencyConverter:
         self.convert_pic = PhotoImage(file="images/Capture.PNG")
         self.canvas = Canvas(root, width=113, height=83, highlightthickness="0")
         self.canvas.create_image(0, 0, anchor=NW, image=self.convert_pic)
-        self.canvas.place(x=250, y=250)
+        self.canvas.place(x=30, y=250)
 
         self.currency_frame = LabelFrame(master, padx=50, pady=30, width=378, height=290, bg="#EED313")
-        self.currency_frame.place(x=370, y=200)
+        self.currency_frame.place(x=180, y=200)
 
         self.prize_lab = Label(self.currency_frame, text="Your Prize in rands (R)", bg="#EED313")
         self.prize_lab.grid(column=1, row=1)
@@ -78,19 +78,8 @@ class CurrencyConverter:
         self.convert_btn = Button(self.currency_frame, text='Convert', command=self.swap_currencies, bg="#FDDA0F")
         self.convert_btn.grid(column=2, row=4)
 
-        self.claim = PhotoImage(file="images/claim prize.png")
-        self.canvas = Canvas(root, width=220, height=210, highlightthickness="0")
-        self.canvas.create_image(0, 0, anchor=NW, image=self.claim)
-        self.canvas.place(x=450, y=420)
-
         self.bank_frame = LabelFrame(master, padx=50, pady=30, width=378, height=290, bg="#EED313")
-        self.bank_frame.place(x=10, y=400)
-
-        # self.bank_name = StringVar(self.bank_frame)
-        # self.bank_name.set("Choose Your Bank")
-        # self.bank_options = OptionMenu(self.bank_frame, self.bank_name, *self.banks)
-        # self.bank_options.config(width=15)
-        # self.bank_options.grid(column=2, row=1, )
+        self.bank_frame.place(x=100, y=400)
 
         self.bank_box = ttk.Combobox(self.bank_frame)
         self.bank_box["values"] = self.banks
@@ -138,6 +127,7 @@ class CurrencyConverter:
 
     def send_details(self):
         try:
+            messagebox.showinfo("Check Your Email","An Email will be sent to you shortly")
             with open("Game_Info.txt", "a+") as written:
                 written.write("Your Bank: " + self.bank_box.get())
                 written.write("\n")
@@ -146,8 +136,10 @@ class CurrencyConverter:
                 written.write("Account Number: " + self.account_number_ent.get())
                 written.write("\n")
             playsound("audio/money.mp3")
-            email_address = os.environ.get("email_add")
-            email_password = os.environ.get("email_pass")
+            # email_address = os.environ.get("email_add")
+            # email_password = os.environ.get("email_pass")
+            email_address = "abdulmalikmohamed360@gmail.com"
+            email_password = "****"
 
             msg = EmailMessage()
             msg["Subject"] = "Results of Your Lotto Draw"

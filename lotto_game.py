@@ -245,7 +245,6 @@ class GameScreen:
             messagebox.showerror("Entry Invalid", "You can only choose number once per Entry")
 
     def generate(self):
-
         x = 0
         #playsound("audio/here they come.mp3")
         while x < 6:
@@ -253,6 +252,7 @@ class GameScreen:
             if number not in self.gene_numb:
                 self.gene_numb.append(number)
                 x = x + 1
+
         else:
 
             x = x - 1
@@ -263,6 +263,8 @@ class GameScreen:
         messagebox.showinfo("winning combo is", self.gene_numb)
         # self.gen_numbs.set("winning combo is " + str(self.gene_numb))
         self.gen_btn.config(state=DISABLED)
+        if len(self.numb_ent1.get()) and len(self.numb_ent2.get()) and len(self.numb_ent3.get()) != 6:
+            return messagebox.showerror("Missing Entries", "Please choose 6 numbers")
         self.same_number1()
 
 
