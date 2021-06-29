@@ -160,10 +160,11 @@ class CurrencyConverter:
                 smtp.send_message(msg)
             root.destroy()
             import main
+        except KeyError:
+            messagebox.showerror("No Entry", "Please choose a bank")
         except ValueError:
             if self.account_number_ent.get() != int:
                 return messagebox.showerror("Entry Invalid", "Please Enter Numbers Only")
-
 
 
 f = CurrencyConverter(root)

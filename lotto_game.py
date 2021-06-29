@@ -47,8 +47,6 @@ class GameScreen:
         self.canvas.create_image(0, 0, anchor=NW, image=self.lucky_numbers, )
         self.canvas.place(x=220, y=15)
 
-
-
         self.number_1 = PhotoImage(file="images/buttons/1.png")
         self.number_2 = PhotoImage(file="images/buttons/2.png")
         self.number_3 = PhotoImage(file="images/buttons/3.png")
@@ -263,8 +261,8 @@ class GameScreen:
         messagebox.showinfo("winning combo is", self.gene_numb)
         # self.gen_numbs.set("winning combo is " + str(self.gene_numb))
         self.gen_btn.config(state=DISABLED)
-        if len(self.numb_ent1.get()) and len(self.numb_ent2.get()) and len(self.numb_ent3.get()) != 6:
-            return messagebox.showerror("Missing Entries", "Please choose 6 numbers")
+        # if len(self.numb_ent1.get()) and len(self.numb_ent2.get()) and len(self.numb_ent3.get()) != 6:
+        #     return messagebox.showerror("Missing Entries", "Please choose 6 numbers")
         self.same_number1()
 
 
