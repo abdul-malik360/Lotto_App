@@ -243,8 +243,12 @@ class GameScreen:
             messagebox.showerror("Entry Invalid", "You can only choose number once per Entry")
 
     def play(self):
-        if len(self.first_numbs) and len(self.second_numbs) and len(self.third_numbs) != 6:
-            return messagebox.showerror("Missing Entries", "Please choose 6 numbers")
+        if len(self.first_numbs) != 6:
+            return messagebox.showerror("List 1 not full", "Please choose 6 numbers")
+        elif len(self.second_numbs) != 6:
+            return messagebox.showerror("List 2 not full", "Please choose 6 numbers")
+        elif len(self.third_numbs) != 6:
+            return messagebox.showerror("List 3 not full", "Please choose 6 numbers")
         else:
             self.generate()
 
