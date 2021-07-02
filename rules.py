@@ -1,6 +1,8 @@
 from tkinter import *
 from playsound import playsound
 import pyttsx3
+import os
+
 
 root = Tk()
 root.geometry("700x700")
@@ -22,13 +24,12 @@ class RulesScreen:
         self.canvas.place(x=500, y=620)
 
         self.rules_frame = LabelFrame(master, text="The Rules of the Game", width=378, height=290, bg="#EED313")
-        self.rules_frame.place(x=150, y=250)
+        self.rules_frame.place(x=100, y=250)
 
         self.rules_txt = Label(self.rules_frame,
                           text="Enter your Name, Email Address and ID Number""\n""Only valid inputs allows you to play" "\n""\n" "Age required to play game is 18 and older" "\n""\n" "You select a set of six numbers and run the game" "\n""\n" "You're allowed to generate 3 sets " "\n""\n" "Your selected set is compared to the game's lucky draw" "\n""\n" "Stand a chance to win R10 000 000" "\n""\n" "If you meet the age requirement, click register""\n""If not, click Exit",
                           bg="#EED313")
         self.rules_txt.grid(column=2, row=1)
-        self.engine = pyttsx3.init()
 
         self.sign_in = Button(self.rules_frame, text="Register", bg="#EED313", command=self.login_screen, cursor="hand2", borderwidth=2, highlightthickness=1, highlightbackground="#FFC107")
         self.sign_in.grid(column=2, row=2, padx=10, pady=10)
@@ -49,10 +50,14 @@ class RulesScreen:
         root.destroy()
 
     def rules(self):
-        self.engine.setProperty("rate", 150)
-        self.engine.say(
-            "Enter your Name, Email Address and ID Number. Only valid inputs allow you to play. Age required to play game is 18 and older. You select a set of six numbers and run the game. You're allowed to generate 3 sets. Your selected set is compared to the game's lucky draw. Stand a chance to win ten million rand. If you meet the age requirement, click register. If not, click Exit.")
-        self.engine.runAndWait()
+        # self.engine = pyttsx3.init()
+        # self.engine.setProperty("rate", 150)
+        # self.engine.say(
+        #     "Enter your Name, Email Address and ID Number. Only valid inputs allow you to play. Age required to play game is 18 and older. You select a set of six numbers and run the game. You're allowed to generate 3 sets. Your selected set is compared to the game's lucky draw. Stand a chance to win ten million rand. If you meet the age requirement, click register. If not, click Exit.")
+        # self.engine.runAndWait()
+
+        text = "Enter your Name, Email Address and ID Number. Only valid inputs allow you to play. Age required to play game is 18 and older. You select a set of six numbers and run the game. You're allowed to generate 3 sets. Your selected set is compared to the game's lucky draw. Stand a chance to win ten million rand. If you meet the age requirement, click register. If not, click Exit."
+        os.system('espeak "{}"'.format(text))
 
 
 b = RulesScreen(root)
