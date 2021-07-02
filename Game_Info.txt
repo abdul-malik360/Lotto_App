@@ -1,0 +1,10 @@
+Your Lucky List 1: []
+Your Lucky List 2: []
+Your Lucky List 3: []
+The Lotto Numbers: [4, 19, 21, 28, 35, 44]
+Your Prize: R 0
+Your Lucky List 1: []
+Your Lucky List 2: []
+Your Lucky List 3: []
+The Lotto Numbers: [14, 28, 30, 37, 40, 44]
+Your Prize: R 0

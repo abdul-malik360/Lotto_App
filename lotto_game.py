@@ -215,7 +215,7 @@ class GameScreen:
         self.ent3 = Label(self.lotto_frame, text="", textvariable=self.numb_ent3, width=15, bg="white")
         self.ent3.grid(column=2, row=3, padx=10, pady=10)
 
-        self.gen_btn = Button(self.lotto_frame, text="PLAY", command=self.generate, bg="#FFC107")
+        self.gen_btn = Button(self.lotto_frame, text="PLAY", command=self.play, bg="#FFC107")
         self.gen_btn.grid(column=2, row=5)
 
         self.clear_btn1 = Button(self.lotto_frame, text="Clear", command=self.clear1, bg="#FFC107")
@@ -241,6 +241,12 @@ class GameScreen:
             messagebox.showinfo("Entries full", "Play Game")
         else:
             messagebox.showerror("Entry Invalid", "You can only choose number once per Entry")
+
+    def play(self):
+        if len(self.first_numbs) and len(self.second_numbs) and len(self.third_numbs) != 6:
+            return messagebox.showerror("Missing Entries", "Please choose 6 numbers")
+        else:
+            self.generate()
 
     def generate(self):
         x = 0
