@@ -254,7 +254,7 @@ class GameScreen:
 
     def generate(self):
         x = 0
-        #playsound("audio/here they come.mp3")
+        playsound("audio/here they come.mp3")
         while x < 6:
             number = random.randint(1, 49)
             if number not in self.gene_numb:
@@ -408,7 +408,3 @@ class GameScreen:
 
 e = GameScreen(root)
 root.mainloop()
-
-
-#                     if len(self.numb_ent1.get()) and len(self.numb_ent2.get()) and len(self.numb_ent3.get()) != 6:
-#             return messagebox.showerror("Missing Entries", "Please choose 6 numbers")
